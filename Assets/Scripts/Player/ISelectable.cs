@@ -11,4 +11,10 @@ public interface ISelectable
     public bool IsSelectable();
 
     public ICardDisplayer GetDisplayer();
+
+    public bool IsEmptyLand();
+
+    public LandCardManager GetManager();
+
+    public bool IsInHand();
 }

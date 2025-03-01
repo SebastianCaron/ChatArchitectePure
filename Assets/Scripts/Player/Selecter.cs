@@ -269,9 +269,24 @@ public class Selecter : MonoBehaviour
                     // CHECK IF FST == ATCK && SND == BUILDING
                     // CHECK IF FST == SPRT && SND == BUILDING
                     // CHECK IF FST == BUILDING && SND == EMPTY LAND   => CARD LAND MANAGER
+                    if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.BUILDING &&
+                        _selection[0].IsInHand() &&
+                        _selection[1].IsEmptyLand())
+                    {
+                        _selection[1].GetManager().AddCard(_selection[0].GetDisplayer().GetCard());
+                        _selection[0].GetDisplayer().SetCard(null);
+                        player.GetHand().RefreshHandData();
+                    }
+                    else
+                    {
+                        _selection.Clear();
+                    }
                     
                     // ELSE POP SELECTION
                 }
+                break;
+            default:
+                _selection.Clear();
                 break;
         }
         

@@ -75,6 +75,11 @@ public class Card
         return this._isBuyable;
     }
 
+    public void SetBuyable(bool isBuyable)
+    {
+        this._isBuyable = isBuyable;
+    }
+
     public override string ToString()
     {
         return "Name : " + _name + "\nDescription : " + _description;

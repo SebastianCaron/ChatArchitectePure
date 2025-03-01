@@ -81,11 +81,28 @@ public class Hand : MonoBehaviour
             if (_cards[i] == null)
             {
                 _cards[i] = card;
+                _cards[i].SetBuyable(false);
                 _hand[i].SetCard(_cards[i]);
                 return;
             }
         }
         Debug.LogWarning("La main est pleine, impossible d'ajouter une nouvelle carte.");
+    }
+
+    public void RefreshHandData()
+    {
+        for (int i = 0; i < nbCards; i++)
+        {
+            _cards[i] = _hand[i].GetCard();
+        }
+    }
+
+    public void RefreshHandDisplay()
+    {
+        for (int i = 0; i < nbCards; i++)
+        {
+            _hand[i].SetCard(_cards[i]);
+        }
     }
 }
 

@@ -12,6 +12,12 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
 
     private Card _card;
     private Color _oldColor;
+    private LandCardManager _manager;
+
+    private void Awake()
+    {
+        this._manager = this.gameObject.GetComponent<LandCardManager>();
+    }
 
     public void SetCard(Card card)
     {
@@ -77,5 +83,20 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     public bool IsSelectable()
     {
         return (this._card != null);
+    }
+
+    public bool IsEmptyLand()
+    {
+        return this._card == null;
+    }
+
+    public LandCardManager GetManager()
+    {
+        return this._manager;
+    }
+
+    public bool IsInHand()
+    {
+        return false;
     }
 }

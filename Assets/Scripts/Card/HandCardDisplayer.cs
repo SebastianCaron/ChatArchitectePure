@@ -94,4 +94,19 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         return (this._card != null);
     }
+
+    public bool IsEmptyLand()
+    {
+        return false;
+    }
+
+    public LandCardManager GetManager()
+    {
+        return null;
+    }
+    
+    public bool IsInHand()
+    {
+        return true;
+    }
 }
