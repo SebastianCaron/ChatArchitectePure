@@ -11,6 +11,7 @@ public class Card
     private int _price;
     private float _life;
     private float _damage;
+    private int _production;
 
     private Player _allegeance = null;
     private bool _isBuyable = true;
@@ -31,6 +32,7 @@ public class Card
         this._price = definition.price;
         this._life = definition.life;
         this._damage = definition.damage;
+        this._production = definition.production;
     }
 
     public CardData GetDefinition()

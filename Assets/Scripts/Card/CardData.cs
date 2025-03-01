@@ -13,6 +13,7 @@ public class CardData : ScriptableObject
     public int price;
     public float life;
     public float damage;
+    public int production;
     public bool overtime;
     public bool isChampion;
     public bool alreadyBuy;

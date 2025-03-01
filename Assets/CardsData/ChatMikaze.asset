@@ -19,6 +19,8 @@ MonoBehaviour:
   price: 8
   life: 0
   damage: 10
+  production: 0
   overtime: 0
   isChampion: 0
   alreadyBuy: 0
+  behaviours: 02000000
