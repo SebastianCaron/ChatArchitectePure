@@ -80,6 +80,11 @@ public class Card
         this._isBuyable = isBuyable;
     }
 
+    public float GetDamage()
+    {
+        return this._damage;
+    }
+
     public override string ToString()
     {
         return "Name : " + _name + "\nDescription : " + _description;

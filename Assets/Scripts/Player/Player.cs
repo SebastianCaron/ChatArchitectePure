@@ -68,4 +68,9 @@ public class Player : MonoBehaviour
         
         landOfThePlayer.UpdateLand(deltaTime);
     }
+
+    public void SetFreeze(float amount)
+    {
+        this._moveDelay = amount;
+    }
 }

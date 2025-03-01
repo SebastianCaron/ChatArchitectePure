@@ -39,7 +39,26 @@ public class LandCardManager : MonoBehaviour
         if (!CanBePlayed(card))
         {
             _player.GetHand().AddToHand(card);
+            return;
         }
+
+        // TYPE CHAT INGENIEUR
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.HEAL &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            ContainsBuilding())
+        {
+            Card building = GetBuilding();
+            building.SetLife(building.GetLife() + card.GetDamage());
+        }
+        // TYPE CHAT-MIKAZE 
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            ContainsBuilding())
+        {
+            Card building = GetBuilding();
+            building.SetLife(building.GetLife() - card.GetDamage());
+        }
+        
         _cardOnLand.Insert(0, card);
         UpdateDisplay();
     }
@@ -59,24 +78,27 @@ public class LandCardManager : MonoBehaviour
             {
                 return true;
             }
-            if (card.GetDefinition().behaviours.Contains(CardBehaviourEnum.DUPLICATE) ||
-                card.GetDefinition().behaviours.Contains(CardBehaviourEnum.FREEZE) ||
-                card.GetDefinition().behaviours.Contains(CardBehaviourEnum.FREEZE_PLAYER) ||
-                card.GetDefinition().behaviours.Contains(CardBehaviourEnum.DAMAGE_NEIGHBOUR))
+            if (card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE ||
+                card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE ||
+                card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER ||
+                card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_NEIGHBOUR)
             {
                 return true;
             }
+
+            return false;
         }
 
         if (card.GetDefinition().type == CardTypeEnum.BUILDING) return false;
         
-        if (card.GetDefinition().behaviours.Contains(CardBehaviourEnum.HEAL) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.DUPLICATE) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.STEAL) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.PROTECT) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.FREEZE_FUNCTION) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.DAMAGE_OVERTIME) ||
-            card.GetDefinition().behaviours.Contains(CardBehaviourEnum.DOUBLE_PRODUCTION))
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.HEAL ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.STEAL ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.PROTECT ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_FUNCTION ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_OVERTIME ||
+            card.GetDefinition().behaviour == CardBehaviourEnum.DOUBLE_PRODUCTION)
         {
             return true;
         }
@@ -92,6 +114,16 @@ public class LandCardManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public Card GetBuilding()
+    {
+        foreach (Card card in _cardOnLand)
+        {
+            if (card.GetDefinition().type == CardTypeEnum.BUILDING) return card;
+        }
+
+        return null;
     }
 
     public bool IsProtected()

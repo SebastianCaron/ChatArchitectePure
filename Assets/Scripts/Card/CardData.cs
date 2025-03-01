@@ -17,6 +17,7 @@ public class CardData : ScriptableObject
     public bool overtime;
     public bool isChampion;
     public bool alreadyBuy;
+    public float delay;
 
-    public CardBehaviourEnum[] behaviours;
+    public CardBehaviourEnum behaviour;
 }
