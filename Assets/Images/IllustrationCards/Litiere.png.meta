@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 9b0e5d0f0c1f2f0f491c337809597d44
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8500152087888711300
+    second: Litiere_0
+  - first:
+      213: -1344793078976328436
+    second: Litiere_1
+  - first:
+      213: -5488512304647818620
+    second: Litiere_2
+  - first:
+      213: -1975783079084024839
+    second: Litiere_3
+  - first:
+      213: -7880027580708243227
+    second: Litiere_4
+  - first:
+      213: -1495846324598457952
+    second: Litiere_5
+  - first:
+      213: -1871546643991668916
+    second: Litiere_6
+  - first:
+      213: 7256404613441325469
+    second: Litiere_7
+  - first:
+      213: -6204925193887392721
+    second: Litiere_8
+  - first:
+      213: -911718373661738023
+    second: Litiere_9
+  - first:
+      213: -2993267792663163401
+    second: Litiere_10
+  - first:
+      213: -6762015605978105663
+    second: Litiere_11
+  - first:
+      213: -3450315495684834477
+    second: Litiere_12
+  - first:
+      213: -8812834279807560116
+    second: Litiere_13
+  - first:
+      213: 3354354395713943128
+    second: Litiere_14
+  - first:
+      213: 4933566428685162034
+    second: Litiere_15
+  - first:
+      213: -8990176721333264921
+    second: Litiere_16
+  - first:
+      213: -1516759669157434065
+    second: Litiere_17
+  - first:
+      213: -787417696996947558
+    second: Litiere_18
+  - first:
+      213: -8694267504670329808
+    second: Litiere_19
+  - first:
+      213: 8334034936338364506
+    second: Litiere_20
+  - first:
+      213: 2667375675307551361
+    second: Litiere_21
+  - first:
+      213: 12965279271002685
+    second: Litiere_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Litiere_0
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 412
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71399836b4690a80800000000000000
+      internalID: -8500152087888711300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 274
+        width: 140
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d4637d1d5565de0800000000000000
+      internalID: -1344793078976328436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_2
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 422
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4823b186323e4d3b0800000000000000
+      internalID: -5488512304647818620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_3
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 404
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fb18f9f1cb9494e0800000000000000
+      internalID: -1975783079084024839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_4
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 401
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e8ba9f5aa484a290800000000000000
+      internalID: -7880027580708243227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_5
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 395
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a93cbf61bfad3be0800000000000000
+      internalID: -1495846324598457952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_6
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 382
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c475d404e3ee606e0800000000000000
+      internalID: -1871546643991668916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_7
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 360
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d990da2cc8de3b460800000000000000
+      internalID: 7256404613441325469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_8
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 356
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c5878496da3e9a0800000000000000
+      internalID: -6204925193887392721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 485
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dbf1ba38fce853f0800000000000000
+      internalID: -911718373661738023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_10
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 248
+        width: 83
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fdc1b43dc6c576d0800000000000000
+      internalID: -2993267792663163401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_11
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 310
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c8f60012ae7822a0800000000000000
+      internalID: -6762015605978105663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_12
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 111
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35bfda456540e10d0800000000000000
+      internalID: -3450315495684834477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_13
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 100
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c465fa73ae582b580800000000000000
+      internalID: -8812834279807560116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_14
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 15
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 856bc4ffc8f0d8e20800000000000000
+      internalID: 3354354395713943128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_15
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 6
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2365299178c877440800000000000000
+      internalID: 4933566428685162034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_16
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 9
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7edd1f867e97c3380800000000000000
+      internalID: -8990176721333264921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_17
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 10
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d6b36fd1363fae0800000000000000
+      internalID: -1516759669157434065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_18
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9904a8c6c78215f0800000000000000
+      internalID: -787417696996947558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_19
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 9
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03437e9c4c1c75780800000000000000
+      internalID: -8694267504670329808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_20
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 8
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58b4267e9078a370800000000000000
+      internalID: 8334034936338364506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_21
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 15
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a69395b0c640520800000000000000
+      internalID: 2667375675307551361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Litiere_22
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 6
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32ac515adf0e2000800000000000000
+      internalID: 12965279271002685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Litiere_0: -8500152087888711300
+      Litiere_1: -1344793078976328436
+      Litiere_10: -2993267792663163401
+      Litiere_11: -6762015605978105663
+      Litiere_12: -3450315495684834477
+      Litiere_13: -8812834279807560116
+      Litiere_14: 3354354395713943128
+      Litiere_15: 4933566428685162034
+      Litiere_16: -8990176721333264921
+      Litiere_17: -1516759669157434065
+      Litiere_18: -787417696996947558
+      Litiere_19: -8694267504670329808
+      Litiere_2: -5488512304647818620
+      Litiere_20: 8334034936338364506
+      Litiere_21: 2667375675307551361
+      Litiere_22: 12965279271002685
+      Litiere_3: -1975783079084024839
+      Litiere_4: -7880027580708243227
+      Litiere_5: -1495846324598457952
+      Litiere_6: -1871546643991668916
+      Litiere_7: 7256404613441325469
+      Litiere_8: -6204925193887392721
+      Litiere_9: -911718373661738023
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
