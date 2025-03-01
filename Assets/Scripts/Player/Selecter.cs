@@ -114,14 +114,6 @@ public class Selecter : MonoBehaviour
     private ISelectable _currentSelectable;
     private void SelectInThisZone(GameObject group, Directions direction)
     {
-        //Debug.Log("Appel de SelectInThisZone avec : " + group.name);
-        //Debug.Log("X : " + _xSelection);
-        //Debug.Log("Y : " + _ySelection);
-        //Debug.Log(_selectables.ContainsKey(group));
-        //Debug.Log(group.gameObject.name);
-        //Debug.Log(_selectables[group].Count());
-        //Debug.Log(_selectables[group][0].Count());
-        
         if (!_selectables.ContainsKey(group) || _selectables[group] == null || _selectables[group].Count == 0)
         {
             Debug.LogError($"Sélection invalide : pas d'éléments dans _selectables pour {group.name}");

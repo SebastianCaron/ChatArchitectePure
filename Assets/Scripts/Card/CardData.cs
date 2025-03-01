@@ -17,5 +17,5 @@ public class CardData : ScriptableObject
     public bool isChampion;
     public bool alreadyBuy;
 
-    // public List<ICardBehaviour> behaviours = new List<ICardBehaviour>();
+    public CardBehaviourEnum[] behaviours;
 }

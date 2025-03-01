@@ -1,0 +1,20 @@
+using UnityEngine;
+
+public enum CardBehaviourEnum
+{
+    HEAL,
+    HEAL_NEIGHBOUR,
+    DAMAGE,
+    DAMAGE_NEIGHBOUR,
+    DAMAGE_OVERTIME,
+    FREEZE,
+    FREEZE_FUNCTION,
+    FREEZE_PLAYER,
+    PROTECT, 
+    PROTECT_NEIGHBOUR,
+    DUPLICATE,
+    STEAL,
+    PRODUCTION_GOLD,
+    DOUBLE_PRODUCTION,
+    MOVE
+}
