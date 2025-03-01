@@ -17,11 +17,13 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     private void Awake()
     {
         this._manager = this.gameObject.GetComponent<LandCardManager>();
+        this._oldColor = colorRenderer.color;
     }
 
     public void SetCard(Card card)
     {
         this._card = card;
+        if(this._card != null) this.slider.maxValue = this._card.GetDefinition().life;
         RefreshDisplay();
     }
 
@@ -40,6 +42,7 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
         if (_card == null)
         {
             display.SetActive(false);
+            return;
         }
         display.SetActive(true);
         spriteRenderer.sprite = _card.GetDefinition().sprite;
@@ -50,7 +53,6 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         if (isSelected)
         {
-            _oldColor = colorRenderer.color;
             colorRenderer.color = selectionColor;
         }
         else
@@ -98,5 +100,15 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     public bool IsInHand()
     {
         return false;
+    }
+    
+    public void SetPlayer(Player player)
+    {
+        this._manager.SetPlayer(player);
+    }
+
+    public Player GetPlayer()
+    {
+        return this._manager.GetPlayer();
     }
 }

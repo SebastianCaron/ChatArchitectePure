@@ -244,7 +244,7 @@ public class Selecter : MonoBehaviour
 
     private void HandleSelection()
     {
-        if (!_selection[0].IsSelectable())
+        if (!_selection[0].IsSelectable() || (_selection[0].GetPlayer() != null && _selection[0].GetPlayer() != player))
         {
             _selection.Clear();
             return;
@@ -261,7 +261,6 @@ public class Selecter : MonoBehaviour
                     if(_selection[0].IsBuyableBy(player)) player.GetShop().Buy(_selection[0].GetDisplayer(), this.player);
                     _selection.Clear();
                 }
-                
             }
                 break;
             case 2:
@@ -276,6 +275,25 @@ public class Selecter : MonoBehaviour
                         _selection[1].GetManager().AddCard(_selection[0].GetDisplayer().GetCard());
                         _selection[0].GetDisplayer().SetCard(null);
                         player.GetHand().RefreshHandData();
+                    }
+                    else if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.ATTACK &&
+                             _selection[0].IsInHand() &&
+                             !_selection[1].IsInHand())
+                    {
+                        _selection[1].GetManager().AddCard(_selection[0].GetDisplayer().GetCard());
+                        _selection[0].GetDisplayer().SetCard(null);
+                        player.GetHand().RefreshHandData();
+                    }
+                    else if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.SUPPORT &&
+                             _selection[0].IsInHand() &&
+                             !_selection[1].IsInHand())
+                    {
+                        _selection[1].GetManager().AddCard(_selection[0].GetDisplayer().GetCard());
+                        _selection[0].GetDisplayer().SetCard(null);
+                        player.GetHand().RefreshHandData();
+                    }else if (_selection[0].GetDisplayer().GetCard().GetDefinition().behaviours.Contains(CardBehaviourEnum.MOVE))
+                    {
+                        break;
                     }
                     else
                     {

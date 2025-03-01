@@ -9,6 +9,7 @@ public class Land : MonoBehaviour
 
     private GameObject[,] _land;
     private LandCardManager[,] _landCardManagers;
+    private Player _player;
     
     private void GenerateGrid()
     {
@@ -34,6 +35,8 @@ public class Land : MonoBehaviour
                 GameObject obj = Instantiate(squarePrefab, position, squarePrefab.transform.rotation, tTransform);
                 obj.name = $"Cell_{row}_{col}";
                 _land[row, col] = obj;
+                _landCardManagers[row, col] = obj.GetComponent<LandCardManager>();
+                _landCardManagers[row, col].SetPlayer(_player);
             }
         }
     }
@@ -83,6 +86,15 @@ public class Land : MonoBehaviour
 
     public void UpdateLand(float deltaTime)
     {
-        
+        foreach (LandCardManager landCardManager in _landCardManagers)
+        {
+            if(landCardManager == null) continue;
+            landCardManager.UpdateLand(deltaTime);
+        }
+    }
+
+    public void SetPlayer(Player player)
+    {
+        this._player = player;
     }
 }

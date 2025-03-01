@@ -17,4 +17,6 @@ public interface ISelectable
     public LandCardManager GetManager();
 
     public bool IsInHand();
+
+    public Player GetPlayer();
 }

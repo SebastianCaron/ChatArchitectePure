@@ -12,6 +12,7 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     private Card _card;
     private bool _isSelected = false;
     private Color _selectionColor;
+    private Player _player;
     
     public void SetCard(Card card)
     {
@@ -108,5 +109,15 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     public bool IsInHand()
     {
         return true;
+    }
+    
+    public void SetPlayer(Player player)
+    {
+        this._player = player;
+    }
+
+    public Player GetPlayer()
+    {
+        return this._player;
     }
 }
