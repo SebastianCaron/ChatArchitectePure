@@ -16,5 +16,7 @@ public enum CardBehaviourEnum
     STEAL,
     PRODUCTION_GOLD,
     MULTIPLY_PRODUCTION,
-    MOVE
+    MOVE, 
+    STEAL_ALL_CARDS,
+    DESTROY_ALL_CARDS
 }

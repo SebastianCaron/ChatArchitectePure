@@ -112,5 +112,19 @@ public class Hand : MonoBehaviour
     {
         this._player = player;
     }
+
+    public Card[] GetCards()
+    {
+        return this._cards;
+    }
+
+    public void ResetHand()
+    {
+        for (int i = 0; i < nbCards; i++)
+        {
+            _cards[i] = null;
+            _hand[i].SetCard(null);
+        }
+    }
 }
 

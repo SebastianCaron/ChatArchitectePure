@@ -209,7 +209,33 @@ public class LandCardManager : MonoBehaviour
             return;
         }
         
-        _player.GetHand().AddToHand(card);
+        // CHAT PARDEUR
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.STEAL_ALL_CARDS &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK)
+        {
+            _player.GetShop().AddCardToUsed(card);
+            _player.GetHand().ResetHand();
+            return;
+        }
+        
+        // CHAT TASTROPHE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DESTROY_ALL_CARDS &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK)
+        {
+            _player.GetShop().AddCardToUsed(card);
+
+            Land land = _player.GetLand();
+            LandCardManager[,] landCardManagers = land.GetLandCardManagers();
+            foreach (LandCardManager landCardManager in landCardManagers)
+            {
+                if(landCardManager == null) continue;
+                landCardManager.ResetLand();
+            }
+            
+            return;
+        }
+        
+        card.GetAllegeance().GetHand().AddToHand(card);
     }
 
     public void MakeDamage(float damage)

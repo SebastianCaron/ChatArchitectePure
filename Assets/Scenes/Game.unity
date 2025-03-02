@@ -1443,14 +1443,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c245b90a7694b5d0b7650e7425fe050, type: 2}
   - {fileID: 11400000, guid: a1138ac402fbc99869f94564b5be4e70, type: 2}
   - {fileID: 11400000, guid: cb417d84baa69ff449a4646a23011e20, type: 2}
-  champions: []
+  champions:
+  - {fileID: 11400000, guid: 3fa593a72ddf6b7bcb1d1400155ec7d3, type: 2}
+  - {fileID: 11400000, guid: b02b4430b0c6089969d3eb93860664d6, type: 2}
   delayForGold: 1
   goldAmount: 1
   events:
   - {fileID: 11400000, guid: 9d2bf1b57163c81b8898346c149f35c6, type: 2}
   - {fileID: 11400000, guid: 9167a781e31ec9434ab4fc4bfc4de681, type: 2}
   - {fileID: 11400000, guid: 9d2bf1b57163c81b8898346c149f35c6, type: 2}
-  delayEvent: 15
+  delayEvent: 40
   gameDuration: 120
   durationText: {fileID: 1898943268}
 --- !u!4 &1425001086
