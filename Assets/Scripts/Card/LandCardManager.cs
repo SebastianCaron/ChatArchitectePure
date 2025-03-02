@@ -187,6 +187,21 @@ public class LandCardManager : MonoBehaviour
             UpdateDisplay();
             return;
         }
+        // TYPE CHAT RLIE CHAT PLINE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            ContainsBuilding())
+        {
+            _player.GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
+            return;
+        }
+        // TYPE CHAT-TOUILLE & CALIN
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK)
+        {
+            _player.SetFreeze(card.GetLife());
+            return;
+        }
         
         _player.GetHand().AddToHand(card);
     }

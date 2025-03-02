@@ -6,4 +6,7 @@ public interface ICardDisplayer
     public Card GetCard();
     public void HidePrice();
     public void RefreshDisplay();
+
+    public Player GetPlayer();
+    public void SetPlayer(Player player);
 }

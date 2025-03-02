@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        handOfThePlayer.Init();
+        handOfThePlayer.SetPlayer(this);
         landOfThePlayer.SetPlayer(this);
+        handOfThePlayer.Init();
         landOfThePlayer.Init();
         goldText.SetText(_goldAmount + "€");
     }

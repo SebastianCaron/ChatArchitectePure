@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour
     private ISelectable[] _handSelectable;
 
     private Card[] _cards;
+    private Player _player;
 
     private void GenerateHand()
     {
@@ -61,6 +62,7 @@ public class Hand : MonoBehaviour
         {
             _cards[i] = null;
             _hand[i].SetCard(_cards[i]);
+            _hand[i].SetPlayer(_player);
         }
     }
 
@@ -81,6 +83,7 @@ public class Hand : MonoBehaviour
             if (_cards[i] == null)
             {
                 _cards[i] = card;
+                _cards[i].SetAllegeance(_player);
                 _cards[i].SetBuyable(false);
                 _hand[i].SetCard(_cards[i]);
                 return;
@@ -103,6 +106,11 @@ public class Hand : MonoBehaviour
         {
             _hand[i].SetCard(_cards[i]);
         }
+    }
+    
+    public void SetPlayer(Player player)
+    {
+        this._player = player;
     }
 }
 

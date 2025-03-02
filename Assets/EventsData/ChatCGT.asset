@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633f54adf129e2618dcd3543b9fefd2, type: 3}
   m_Name: ChatCGT
   m_EditorClassIdentifier: 
-  eventName: 
-  eventDescription: 
+  eventName: Chat CGT
+  eventDescription: "Tous les batiments pos\xE9s les terrains font desormais perdre
+    de l'argent au proprietaire."
+  eventSprite: {fileID: 21300000, guid: 26cf6b64e08aa0f119ceaeda2715855b, type: 3}
   eventDuration: 0
   values: []

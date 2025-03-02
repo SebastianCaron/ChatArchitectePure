@@ -1433,6 +1433,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 099cf5fd709550503b4089cbdb58f3b7, type: 2}
   - {fileID: 11400000, guid: c30dd91bf347efcf38dee149a55d3579, type: 2}
   - {fileID: 11400000, guid: 55f0fbb5830676245bdba491942ea75f, type: 2}
+  - {fileID: 11400000, guid: 72e12eac6c2e3239db371e4b79800d11, type: 2}
+  - {fileID: 11400000, guid: 828f574c7be70e92aba9d747a029ff51, type: 2}
+  - {fileID: 11400000, guid: 57e962b51282ecceba0d3605bd5127d2, type: 2}
+  - {fileID: 11400000, guid: 63b8d47c86682c557ae66b2e521dd62f, type: 2}
+  - {fileID: 11400000, guid: 121d0e0f7a5b07b0d99b3d8d0c91aa92, type: 2}
+  - {fileID: 11400000, guid: a02185664db4390ad8dc0a91270ad511, type: 2}
+  - {fileID: 11400000, guid: 6c245b90a7694b5d0b7650e7425fe050, type: 2}
+  - {fileID: 11400000, guid: a1138ac402fbc99869f94564b5be4e70, type: 2}
+  - {fileID: 11400000, guid: cb417d84baa69ff449a4646a23011e20, type: 2}
 --- !u!4 &1425001086
 Transform:
   m_ObjectHideFlags: 0
@@ -1596,8 +1605,8 @@ MonoBehaviour:
   player: {fileID: 1462976237}
   color: {r: 1, g: 0.5811298, b: 0, a: 1}
   keyUp: 119
-  keyDown: 97
-  keyLeft: 115
+  keyDown: 115
+  keyLeft: 97
   keyRight: 100
   keyTrigger: 13
   groupsOfSelectables:

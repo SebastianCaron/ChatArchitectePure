@@ -268,9 +268,12 @@ public class Selecter : MonoBehaviour
                     // CHECK IF FST == ATCK && SND == BUILDING
                     // CHECK IF FST == SPRT && SND == BUILDING
                     // CHECK IF FST == BUILDING && SND == EMPTY LAND   => CARD LAND MANAGER
-                    if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.BUILDING &&
-                        _selection[0].IsInHand() &&
-                        _selection[1].IsEmptyLand() && _selection[1].GetPlayer() == player)
+                    // THIS IS NOW DELEGATED TO LAND CARD MANAGER
+                    
+                    // TODO: CHAT PELLE
+                    
+                    if (_selection[0].IsInHand() &&
+                        !_selection[1].IsInHand() && _selection[0].GetPlayer() == player)
                     {
                         Card card = _selection[0].GetDisplayer().GetCard();
                         _selection[0].GetDisplayer().SetCard(null);
@@ -279,45 +282,10 @@ public class Selecter : MonoBehaviour
                         _selection.Clear();
                         return;
                     }
-                    else if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.ATTACK &&
-                             _selection[0].IsInHand() &&
-                             !_selection[1].IsInHand())
-                    {
-                        // TYPE CHAT TOUILLE
-                        if (_selection[0].GetDisplayer().GetCard().GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER)
-                        {
-                            _selection[1].GetPlayer().SetFreeze(_selection[0].GetDisplayer().GetCard().GetLife());
-                            _selection[0].GetDisplayer().SetCard(null);
-                            player.GetHand().RefreshHandData();
-                            _selection.Clear();
-                            return;
-                        }
-                        
-                        Card card = _selection[0].GetDisplayer().GetCard();
-                        _selection[0].GetDisplayer().SetCard(null);
-                        player.GetHand().RefreshHandData();
-                        _selection[1].GetManager().AddCard(card);
-                        _selection.Clear();
-                        return;
-                    }
-                    else if (_selection[0].GetDisplayer().GetCard().GetDefinition().type == CardTypeEnum.SUPPORT &&
-                             _selection[0].IsInHand() &&
-                             !_selection[1].IsInHand())
-                    {
-                        Card card = _selection[0].GetDisplayer().GetCard();
-                        _selection[0].GetDisplayer().SetCard(null);
-                        player.GetHand().RefreshHandData();
-                        _selection[1].GetManager().AddCard(card);
-                        _selection.Clear();
-                        return;
-                    }else if (_selection[0].GetDisplayer().GetCard().GetDefinition().behaviour == CardBehaviourEnum.MOVE)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        _selection.Clear();
-                    }
+                    
+                    _selection.Clear();
+                    
+                    
                     
                     // ELSE POP SELECTION
                 }

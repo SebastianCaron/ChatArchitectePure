@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeeba62302782777685d01584485af77, type: 3}
-  m_Name: ChatPiteau
+  m_Name: ChatRcutier
   m_EditorClassIdentifier: 
-  Name: Chat-Piteau
-  description: Produit 3golds/Sec
+  Name: Chat Rcutier
+  description: Produit 6 golds / s
   type: 2
-  sprite: {fileID: 21300000, guid: 4b44e62e71a8b2490b44c01b8b2f4bcb, type: 3}
-  price: 5
-  life: 25
+  sprite: {fileID: 21300000, guid: 254ff348eae272946b05091f57835e0d, type: 3}
+  price: 7
+  life: 15
   damage: 0
-  production: 3
+  production: 6
   overtime: 0
   isChampion: 0
   alreadyBuy: 0

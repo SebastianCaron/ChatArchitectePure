@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeeba62302782777685d01584485af77, type: 3}
-  m_Name: ChatPiteau
+  m_Name: ChatLumeau
   m_EditorClassIdentifier: 
-  Name: Chat-Piteau
-  description: Produit 3golds/Sec
-  type: 2
-  sprite: {fileID: 21300000, guid: 4b44e62e71a8b2490b44c01b8b2f4bcb, type: 3}
-  price: 5
-  life: 25
-  damage: 0
-  production: 3
+  Name: ChatLumeau
+  description: "Enl\xE8ve 5 secs de dur\xE9e de vie sur 3 batiments"
+  type: 0
+  sprite: {fileID: 21300000, guid: 3089d708eac94b9f99f5a835035eb571, type: 3}
+  price: 8
+  life: 0
+  damage: 5
+  production: 0
   overtime: 0
   isChampion: 0
   alreadyBuy: 0
-  delay: 1
-  behaviour: 12
+  delay: 0
+  behaviour: 2
