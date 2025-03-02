@@ -71,6 +71,7 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetLife(building.GetLife() + card.GetDamage());
+            _player.GetShop().AddCardToUsed(card);
             return;
         }
         // TYPE CHAT-MIKAZE - CHAT RAGE
@@ -81,6 +82,7 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetLife(building.GetLife() - card.GetDamage());
+            _player.GetShop().AddCardToUsed(card);
             return;
         }
         // TYPE CHAT-ARCHITECTE
@@ -90,6 +92,7 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetProduction(building.GetProduction() * card.GetProduction());
+            _player.GetShop().AddCardToUsed(card);
             return;
         }
         // TYPE CHAT-MURAILLE
@@ -175,6 +178,7 @@ public class LandCardManager : MonoBehaviour
             {
                 neighbour.MakeDamage(card.GetDamage());
             }
+            _player.GetShop().AddCardToUsed(card);
             return;
         }
         // TYPE LITIERE
@@ -192,6 +196,7 @@ public class LandCardManager : MonoBehaviour
             card.GetDefinition().type == CardTypeEnum.SUPPORT &&
             ContainsBuilding())
         {
+            _player.GetShop().AddCardToUsed(card);
             _player.GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
             return;
         }
@@ -199,6 +204,7 @@ public class LandCardManager : MonoBehaviour
         if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER &&
             card.GetDefinition().type == CardTypeEnum.ATTACK)
         {
+            _player.GetShop().AddCardToUsed(card);
             _player.SetFreeze(card.GetLife());
             return;
         }
@@ -318,6 +324,8 @@ public class LandCardManager : MonoBehaviour
                 SetFrozen(false);
                 break;
         }
+        
+        _player.GetShop().AddCardToUsed(card);
     }
 
     private void UseEffect(Card card)

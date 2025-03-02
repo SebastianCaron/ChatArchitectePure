@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Shop : MonoBehaviour
 {
@@ -10,11 +13,13 @@ public class Shop : MonoBehaviour
     [SerializeField] private float columnOffset = 1.2f;
     [SerializeField] private float shopRefreshDelay = 10.0f;
     [SerializeField] private Slider slider;
+
+    [SerializeField] private float championPercentage = 0.05f;
     
     private ICardDisplayer[,] _shopClassic;
     private ICardDisplayer[,] _shopUsed;
     private CardData[] _definitions;
-    private CardData[] _champions;
+    private List<CardData> _champions;
 
     private float _elapsedTime = 0;
     
@@ -137,7 +142,7 @@ public class Shop : MonoBehaviour
 
     public void SetChampions(CardData[] champions)
     {
-        this._champions = champions;
+        this._champions = new List<CardData>(champions);
     }
 
     public void Init()
@@ -165,15 +170,30 @@ public class Shop : MonoBehaviour
         foreach (ICardDisplayer cardDisplayer in _shopClassic)
         {
             if(cardDisplayer.Equals(null)) continue;
-            Card card = new Card(_definitions[Random.Range(0, _definitions.Length)]);
+            Card card = GenerateCard();
             cardDisplayer.SetCard(card);
         }
+    }
+
+    private Card GenerateCard()
+    {
+        if (Random.Range(0, 1) < championPercentage && _champions.Count > 0)
+        {
+            CardData champ = _champions[Random.Range(0, _champions.Count)];
+            _champions.Remove(champ);
+            return new Card(champ);
+        }
+        return new Card(_definitions[Random.Range(0, _definitions.Length)]);
     }
 
     public void AddCardToUsed(Card card)
     {
         if (_shopUsed == null || _shopUsed.GetLength(0) == 0 || _shopUsed.GetLength(1) == 0) return;
-
+        if (card == null) return;
+        
+        card.ResetExceptAllegeance();
+        card.SetPrice(card.GetPrice() / 2);
+        
         int rows = _shopUsed.GetLength(0);
         int cols = _shopUsed.GetLength(1);
         

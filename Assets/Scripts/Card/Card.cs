@@ -128,4 +128,11 @@ public class Card
     {
         return this._allegeance;
     }
+
+    public void ResetExceptAllegeance()
+    {
+        SetDefinition(this._definition);
+        _isBuyable = true;
+        _timeElapsed = 0;
+    }
 }
