@@ -283,6 +283,7 @@ public class Selecter : MonoBehaviour
                              _selection[0].IsInHand() &&
                              !_selection[1].IsInHand())
                     {
+                        // TYPE CHAT TOUILLE
                         if (_selection[0].GetDisplayer().GetCard().GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER)
                         {
                             _selection[1].GetPlayer().SetFreeze(_selection[0].GetDisplayer().GetCard().GetLife());

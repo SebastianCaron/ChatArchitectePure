@@ -12,9 +12,12 @@ public class Card
     private float _life;
     private float _damage;
     private int _production;
+    private float _delay;
 
     private Player _allegeance = null;
     private bool _isBuyable = true;
+
+    private float _timeElapsed = 0.0f;
 
     public Card() { }
 
@@ -33,6 +36,7 @@ public class Card
         this._life = definition.life;
         this._damage = definition.damage;
         this._production = definition.production;
+        this._delay = definition.delay;
     }
 
     public CardData GetDefinition()
@@ -85,8 +89,43 @@ public class Card
         return this._damage;
     }
 
+    public int GetProduction()
+    {
+        return this._production;
+    }
+
+    public void SetProduction(int production)
+    {
+        this._production = production;
+    }
+    
     public override string ToString()
     {
         return "Name : " + _name + "\nDescription : " + _description;
+    }
+    
+    public void UpdateCardDelay(float deltaTime)
+    {
+        _timeElapsed += deltaTime;
+    }
+
+    public bool IsEffectUsable()
+    {
+        return _timeElapsed >= _delay;
+    }
+
+    public void ResetDelay()
+    {
+        _timeElapsed = 0;
+    }
+
+    public void SetAllegeance(Player player)
+    {
+        this._allegeance = player;
+    }
+
+    public Player GetAllegeance()
+    {
+        return this._allegeance;
     }
 }

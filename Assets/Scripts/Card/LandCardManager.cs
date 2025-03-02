@@ -7,9 +7,12 @@ public class LandCardManager : MonoBehaviour
 {
     private List<Card> _cardOnLand = new List<Card>();
     private LandCardDisplayer _cardDisplayer;
-    private LandCardManager[] _neighbours = new LandCardManager[2];
+    private List<LandCardManager> _neighbours = new List<LandCardManager>();
     private bool _isProtected = false;
+    private bool _isFrozen = false;
+    private bool _containsBuilding = false;
     private Player _player;
+    private Player _forGoldPlayer;
 
     private void Awake()
     {
@@ -20,26 +23,41 @@ public class LandCardManager : MonoBehaviour
     {
         if (_cardOnLand.Count <= 0) return;
 
-        float time = deltaTime;
-        //Debug.Log(deltaTime);
-        if (_cardOnLand[0].GetLife() < time)
+        // UPDATE DELAY
+        foreach (Card card in _cardOnLand)
         {
-            time -= _cardOnLand[0].GetLife();
-            _cardOnLand.RemoveAt(0);
-            UpdateDisplay();
-            UpdateLand(time);
-            return;
+            card.UpdateCardDelay(deltaTime);
         }
-        _cardOnLand[0].SetLife(_cardOnLand[0].GetLife() - time);
-        UpdateDisplay();
+        // USE EFFECT
+        foreach (Card card in _cardOnLand)
+        {
+            if (card.IsEffectUsable())
+            {
+                UseEffect(card);
+                card.ResetDelay();
+            }
+        }
+        
+        // UPDATE LIFE OF CARDS
+        foreach (Card card in _cardOnLand)
+        {
+            card.SetLife(card.GetLife() - deltaTime);
+            if (card.IsDead())
+            {
+                _cardOnLand.Remove(card);
+                if (card.GetDefinition().type == CardTypeEnum.BUILDING)
+                {
+                    UpdateDisplay();
+                }
+            }
+        }
     }
 
     public void AddCard(Card card)
     {
-        if (!CanBePlayed(card))
+        if (_isFrozen)
         {
             _player.GetHand().AddToHand(card);
-            return;
         }
 
         // TYPE CHAT INGENIEUR
@@ -49,75 +67,151 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetLife(building.GetLife() + card.GetDamage());
+            return;
         }
-        // TYPE CHAT-MIKAZE 
-        if (card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE &&
+        // TYPE CHAT-MIKAZE - CHAT RAGE
+        if (!_isProtected &&
+            card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE &&
             card.GetDefinition().type == CardTypeEnum.ATTACK &&
             ContainsBuilding())
         {
             Card building = GetBuilding();
             building.SetLife(building.GetLife() - card.GetDamage());
+            return;
+        }
+        // TYPE CHAT-ARCHITECTE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.MULTIPLY_PRODUCTION &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            ContainsBuilding())
+        {
+            Card building = GetBuilding();
+            building.SetProduction(building.GetProduction() * card.GetProduction());
+            return;
+        }
+        // TYPE CHAT-MURAILLE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.PROTECT &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            ContainsBuilding())
+        {
+            SetProtected(true);
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        // TYPE CHAT-SOEUR
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.PROTECT_NEIGHBOUR &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            !ContainsBuilding())
+        {
+            foreach (LandCardManager neighbour in _neighbours)
+            {
+                neighbour.SetProtected(true);
+            }
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        // TYPE CHAT-RME
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.STEAL &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            _forGoldPlayer = card.GetAllegeance();
+            return;
+        }
+        // TYPE CHAT-BYTE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            !ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            SetFrozen(true);
+            return;
+        }
+        // TYPE MACHE-CABLE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_FUNCTION &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            SetFrozen(true);
+            return;
         }
         
-        _cardOnLand.Insert(0, card);
-        UpdateDisplay();
+        // TYPE CHAT-MALLOW
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.HEAL_NEIGHBOUR &&
+            card.GetDefinition().type == CardTypeEnum.BUILDING &&
+            !ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        
+        // TYPE CHAT-PRODUCTION
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.PRODUCTION_GOLD &&
+            card.GetDefinition().type == CardTypeEnum.BUILDING &&
+            !ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        // TYPE CHAT-LUMEAU
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_NEIGHBOUR &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK)
+        {
+            MakeDamage(card.GetDamage());
+            foreach (LandCardManager neighbour in _neighbours)
+            {
+                neighbour.MakeDamage(card.GetDamage());
+            }
+            return;
+        }
+        // TYPE LITIERE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_NEIGHBOUR &&
+            card.GetDefinition().type == CardTypeEnum.BUILDING &&
+            !ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        
+        _player.GetHand().AddToHand(card);
     }
 
     public void MakeDamage(float damage)
     {
         if (_cardOnLand.Count <= 0) return;
-        
-        UpdateLand(damage);
-    }
+        if (_isProtected) return;
 
-    public bool CanBePlayed(Card card)
-    {
-        if (!ContainsBuilding())
+        Card building = GetBuilding();
+        building.SetLife(building.GetLife() - damage);
+
+        if (building.IsDead())
         {
-            if (card.GetDefinition().type == CardTypeEnum.BUILDING)
-            {
-                return true;
-            }
-            if (card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE ||
-                card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE ||
-                card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER ||
-                card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_NEIGHBOUR)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        if (card.GetDefinition().type == CardTypeEnum.BUILDING) return false;
-        
-        if (card.GetDefinition().behaviour == CardBehaviourEnum.HEAL ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.STEAL ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.PROTECT ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_FUNCTION ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE_OVERTIME ||
-            card.GetDefinition().behaviour == CardBehaviourEnum.DOUBLE_PRODUCTION)
-        {
-            return true;
+            _cardOnLand.Remove(building);
+            OnDeath(building);
         }
         
-        return false;
+        UpdateDisplay();
     }
 
     public bool ContainsBuilding()
     {
-        foreach (Card card in _cardOnLand)
-        {
-            if (card.GetDefinition().type == CardTypeEnum.BUILDING) return true;
-        }
-
-        return false;
+        return _containsBuilding;
     }
 
     public Card GetBuilding()
     {
+        if (!_containsBuilding) return null;
         foreach (Card card in _cardOnLand)
         {
             if (card.GetDefinition().type == CardTypeEnum.BUILDING) return card;
@@ -136,8 +230,19 @@ public class LandCardManager : MonoBehaviour
         this._isProtected = isProtected;
     }
 
+    public bool IsFrozen()
+    {
+        return this._isFrozen;
+    }
+
+    public void SetFrozen(bool isFrozen)
+    {
+        this._isFrozen = isFrozen;
+    }
+
     private void UpdateDisplay()
     {
+        if (!_containsBuilding) return;
         bool isSet = false;
         for (int i = 0; i < _cardOnLand.Count; i++)
         {
@@ -159,10 +264,70 @@ public class LandCardManager : MonoBehaviour
     public void SetPlayer(Player player)
     {
         this._player = player;
+        this._forGoldPlayer = player;
     }
 
     public Player GetPlayer()
     {
         return this._player;
+    }
+
+    private void OnDeath(Card card)
+    {
+        if (card.GetDefinition().type == CardTypeEnum.BUILDING)
+        {
+            this._containsBuilding = false;
+            UpdateDisplay();
+        }
+        
+        switch (card.GetDefinition().behaviour)
+        {
+            case CardBehaviourEnum.PROTECT:
+                SetProtected(false);
+                break;
+            case CardBehaviourEnum.PROTECT_NEIGHBOUR:
+                foreach (LandCardManager neighbour in _neighbours)
+                {
+                    neighbour.SetProtected(false);
+                }
+                break;
+            case CardBehaviourEnum.STEAL:
+                this._forGoldPlayer = _player;
+                break;
+            case CardBehaviourEnum.FREEZE:
+            case CardBehaviourEnum.FREEZE_FUNCTION:
+                SetFrozen(false);
+                break;
+        }
+    }
+
+    private void UseEffect(Card card)
+    {
+        switch (card.GetDefinition().behaviour)
+        {
+            case CardBehaviourEnum.PRODUCTION_GOLD:
+                if(!_isFrozen) _forGoldPlayer.AddGold(card.GetProduction());
+                break;
+            case CardBehaviourEnum.DAMAGE_OVERTIME:
+                MakeDamage(card.GetDamage());
+                break;
+            case CardBehaviourEnum.DAMAGE_NEIGHBOUR:
+                foreach (LandCardManager neighbour in _neighbours)
+                {
+                    neighbour.MakeDamage(card.GetDamage());
+                }
+                break;
+            case CardBehaviourEnum.HEAL_NEIGHBOUR:
+                foreach (LandCardManager neighbour in _neighbours)
+                {
+                    neighbour.MakeDamage(-card.GetDamage());
+                }
+                break;
+        }
+    }
+
+    public void AddNeighbour(LandCardManager cardManager)
+    {
+        _neighbours.Add(cardManager);
     }
 }

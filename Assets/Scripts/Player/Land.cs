@@ -36,6 +36,16 @@ public class Land : MonoBehaviour
                 obj.name = $"Cell_{row}_{col}";
                 _land[row, col] = obj;
                 _landCardManagers[row, col] = obj.GetComponent<LandCardManager>();
+                
+            }
+        }
+
+        for (int row = 0; row < sizeRows.Length; row++)
+        {
+            for (int col = 0; col < sizeRows[row]; col++)
+            {
+                if(col > 0) _landCardManagers[row, col].AddNeighbour(_landCardManagers[row, col-1]);
+                if(col < sizeRows[row]-1) _landCardManagers[row, col].AddNeighbour(_landCardManagers[row, col+1]);
                 _landCardManagers[row, col].SetPlayer(_player);
             }
         }

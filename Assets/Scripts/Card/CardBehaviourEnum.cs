@@ -15,6 +15,6 @@ public enum CardBehaviourEnum
     DUPLICATE,
     STEAL,
     PRODUCTION_GOLD,
-    DOUBLE_PRODUCTION,
+    MULTIPLY_PRODUCTION,
     MOVE
 }

@@ -51,9 +51,20 @@ public class Player : MonoBehaviour
         return this._goldAmount;
     }
 
+    public void AddGold(int amount)
+    {
+        this._goldAmount += amount;
+        RefreshGoldDisplay();
+    }
+
     public void SetGold(int gold)
     {
         this._goldAmount = gold;
+        RefreshGoldDisplay();
+    }
+
+    private void RefreshGoldDisplay()
+    {
         goldText.SetText(_goldAmount + "€");
     }
 
