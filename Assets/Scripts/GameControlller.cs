@@ -1,17 +1,32 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameControlller : MonoBehaviour
 {
     [SerializeField] private CardData[] cardsDefinition;
+    [SerializeField] private CardData[] champions;
+    
+    [SerializeField] private float delayForGold = 1.0f;
+    [SerializeField] private int goldAmount = 1;
+    
+    [SerializeField] private GatoEvento[] events;
+    [SerializeField] private float delayEvent = 40f;
+
+    [SerializeField] private float gameDuration = 120f;
+    [SerializeField] private TMP_Text durationText;
     
     private Player[] _players;
     private Shop _shop;
+    private float _elapsedTime = 0.0f;
+    private IGatoEvento _gatoEvento = null;
+    private float _elapsedTimeEvent = 0.0f;
     
     private void Awake()
     {
         _shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
         _shop.SetDefinitions(cardsDefinition);
+        _shop.SetChampions(champions);
         _shop.Init();
         
         GameObject[] playersGameObject = GameObject.FindGameObjectsWithTag("Player");
@@ -29,23 +44,53 @@ public class GameControlller : MonoBehaviour
             _players[i].InitSelecter();
         }
         
-        
-        
     }
 
-    private void Update()
+    private void GameUpdate()
     {
         float delta = Time.deltaTime;
+
+        _elapsedTime += delta;
+        if (_elapsedTime >= delayForGold)
+        {
+            foreach (Player player in _players)
+            {
+                player.AddGold(goldAmount);
+            }
+
+            _elapsedTime = 0;
+        }
+        
         _shop.UpdateShop(delta);
         
         foreach (Player player in _players)
         {
             player.UpdatePlayer(delta);
         }
+
+        gameDuration -= delta;
+        if(durationText) durationText.SetText(Math.Round(gameDuration, 1).ToString());
+    }
+
+    private void Update()
+    {
+        if (gameDuration > 0)
+        {
+            GameUpdate();
+        }
+        else
+        {
+            // TODO : DISPLAY WINNER & DATAS
+        }
     }
 
     public CardData[] GetCards()
     {
         return this.cardsDefinition;
+    }
+
+    public CardData[] GetChampions()
+    {
+        return this.champions;
     }
 }

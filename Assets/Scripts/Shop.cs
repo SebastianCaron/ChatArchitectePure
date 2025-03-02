@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
     private ICardDisplayer[,] _shopClassic;
     private ICardDisplayer[,] _shopUsed;
     private CardData[] _definitions;
+    private CardData[] _champions;
 
     private float _elapsedTime = 0;
     
@@ -132,6 +133,11 @@ public class Shop : MonoBehaviour
     public void SetDefinitions(CardData[] defs)
     {
         this._definitions = defs;
+    }
+
+    public void SetChampions(CardData[] champions)
+    {
+        this._champions = champions;
     }
 
     public void Init()
