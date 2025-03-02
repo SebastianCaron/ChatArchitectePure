@@ -197,9 +197,20 @@ public class LandCardManager : MonoBehaviour
             ContainsBuilding())
         {
             _player.GetShop().AddCardToUsed(card);
-            _player.GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
+            card.GetAllegeance().GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
             return;
         }
+        // TYPE CHAT PELLE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.DUPLICATE &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            ContainsBuilding())
+        {
+            _player.GetShop().AddCardToUsed(card);
+            card.GetAllegeance().GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
+            ResetLand();
+            return;
+        }
+        
         // TYPE CHAT-TOUILLE & CALIN
         if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER &&
             card.GetDefinition().type == CardTypeEnum.ATTACK)

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeeba62302782777685d01584485af77, type: 3}
+  m_Name: ChatPelle
+  m_EditorClassIdentifier: 
+  Name: ChatPelle
+  description: "Creuse et r\xE9cup\xE9re le batiment"
+  type: 0
+  sprite: {fileID: 21300000, guid: d1e3a895f099bfaacbe35fc8c35fc1ae, type: 3}
+  price: 20
+  life: 0
+  damage: 0
+  production: 0
+  overtime: 0
+  isChampion: 1
+  alreadyBuy: 0
+  delay: 0
+  behaviour: 10
