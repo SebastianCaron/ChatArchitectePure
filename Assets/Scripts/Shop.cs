@@ -159,7 +159,7 @@ public class Shop : MonoBehaviour
         foreach (ICardDisplayer cardDisplayer in _shopClassic)
         {
             if(cardDisplayer.Equals(null)) continue;
-            Card card = new Card(_definitions[Random.Range(0, _definitions.Length - 1)]);
+            Card card = new Card(_definitions[Random.Range(0, _definitions.Length)]);
             cardDisplayer.SetCard(card);
         }
     }

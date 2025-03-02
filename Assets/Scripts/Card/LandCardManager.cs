@@ -39,18 +39,22 @@ public class LandCardManager : MonoBehaviour
         }
         
         // UPDATE LIFE OF CARDS
-        foreach (Card card in _cardOnLand)
+        List<Card> cpTemp = new List<Card>(_cardOnLand);
+        foreach (Card card in cpTemp)
         {
             card.SetLife(card.GetLife() - deltaTime);
             if (card.IsDead())
             {
                 _cardOnLand.Remove(card);
+                OnDeath(card);
                 if (card.GetDefinition().type == CardTypeEnum.BUILDING)
                 {
                     UpdateDisplay();
                 }
             }
         }
+        
+        UpdateDisplay();
     }
 
     public void AddCard(Card card)
@@ -101,7 +105,7 @@ public class LandCardManager : MonoBehaviour
         }
         // TYPE CHAT-SOEUR
         if (card.GetDefinition().behaviour == CardBehaviourEnum.PROTECT_NEIGHBOUR &&
-            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            card.GetDefinition().type == CardTypeEnum.BUILDING &&
             !ContainsBuilding())
         {
             foreach (LandCardManager neighbour in _neighbours)
@@ -276,8 +280,8 @@ public class LandCardManager : MonoBehaviour
     {
         if (card.GetDefinition().type == CardTypeEnum.BUILDING)
         {
-            this._containsBuilding = false;
             UpdateDisplay();
+            this._containsBuilding = false;
         }
         
         switch (card.GetDefinition().behaviour)
@@ -315,6 +319,12 @@ public class LandCardManager : MonoBehaviour
                 foreach (LandCardManager neighbour in _neighbours)
                 {
                     neighbour.MakeDamage(card.GetDamage());
+                }
+                break;
+            case CardBehaviourEnum.PROTECT_NEIGHBOUR:
+                foreach (LandCardManager neighbour in _neighbours)
+                {
+                    neighbour.SetProtected(true);
                 }
                 break;
             case CardBehaviourEnum.HEAL_NEIGHBOUR:
