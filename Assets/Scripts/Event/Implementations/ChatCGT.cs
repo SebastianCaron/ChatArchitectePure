@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChatCGT : IGatoEvento
 {
     private GameControlller _controlller;
-    public void Init(GameControlller controller)
+    public void Init(GameControlller controller, GatoEvento evento)
     {
         this._controlller = controller;
     }

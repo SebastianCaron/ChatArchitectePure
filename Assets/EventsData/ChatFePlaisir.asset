@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7633f54adf129e2618dcd3543b9fefd2, type: 3}
+  m_Name: ChatFePlaisir
+  m_EditorClassIdentifier: 
+  eventName: "Chat F\xE9pl\xE9zir"
+  eventDescription: -50% En boutique pendant 20sec
+  eventSprite: {fileID: 21300000, guid: e9c5f7337eb430c3f84cf41bdee7de36, type: 3}
+  eventDuration: 20
+  eventType: 2
+  values:
+  - 0.5

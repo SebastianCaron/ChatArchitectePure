@@ -20,6 +20,7 @@ public class Shop : MonoBehaviour
     private ICardDisplayer[,] _shopUsed;
     private CardData[] _definitions;
     private List<CardData> _champions;
+    private float _discount = 0;
 
     private float _elapsedTime = 0;
     
@@ -177,13 +178,20 @@ public class Shop : MonoBehaviour
 
     private Card GenerateCard()
     {
+        CardData data;
         if (Random.Range(0, 1) < championPercentage && _champions.Count > 0)
         {
-            CardData champ = _champions[Random.Range(0, _champions.Count)];
-            _champions.Remove(champ);
-            return new Card(champ);
+            data = _champions[Random.Range(0, _champions.Count)];
+            _champions.Remove(data);
         }
-        return new Card(_definitions[Random.Range(0, _definitions.Length)]);
+        else
+        {
+            data = _definitions[Random.Range(0, _definitions.Length)];
+        }
+
+        Card card = new Card(data);
+        card.SetPrice((int)(card.GetPrice() * (1 - _discount)));
+        return card;
     }
 
     public void AddCardToUsed(Card card)
@@ -192,7 +200,7 @@ public class Shop : MonoBehaviour
         if (card == null) return;
         
         card.ResetExceptAllegeance();
-        card.SetPrice(card.GetPrice() / 2);
+        card.SetPrice((int) ((card.GetPrice() / 2) * (1 - _discount)));
         
         int rows = _shopUsed.GetLength(0);
         int cols = _shopUsed.GetLength(1);
@@ -233,7 +241,36 @@ public class Shop : MonoBehaviour
             cardDisplayer.SetCard(null);
         }
     }
-    
-    
+
+    public void SetDiscount(float discount)
+    {
+        this._discount = discount;
+        RefreshWithDiscount();
+    }
+
+    private void RefreshWithDiscount()
+    {
+        foreach (ICardDisplayer cardDisplayer in _shopClassic)
+        {
+            if(cardDisplayer == null) continue;
+            Card card = cardDisplayer.GetCard();
+            if(card == null) continue;
+            card.SetPrice((int) (card.GetPrice() * (1 - _discount)));
+            cardDisplayer.RefreshDisplay();
+        }
+        foreach (ICardDisplayer cardDisplayer in _shopUsed)
+        {
+            if(cardDisplayer == null) continue;
+            Card card = cardDisplayer.GetCard();
+            if(card == null) continue;
+            card.SetPrice((int) (card.GetPrice() * (1 - _discount)));
+            cardDisplayer.RefreshDisplay();
+        }
+    }
+
+    public float GetDiscount()
+    {
+        return this._discount;
+    }
     
 }

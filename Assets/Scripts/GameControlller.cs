@@ -99,6 +99,7 @@ public class GameControlller : MonoBehaviour
                 _gatoEvento = new ChatCGT();
                 break;
             case EventEnum.CHAT_FEPLAISIR:
+                _gatoEvento = new ChatFeplezir();
                 break;
             case EventEnum.CHAT_TASTROPHE:
                 _gatoEvento = new ChatTastrophe();
@@ -108,7 +109,7 @@ public class GameControlller : MonoBehaviour
         if (_gatoEvento != null)
         {
             // TODO : DISPLAY EVENT 
-            _gatoEvento.Init(this);
+            _gatoEvento.Init(this, evento);
             _gatoEvento.Execute();
         }
     }
@@ -138,5 +139,10 @@ public class GameControlller : MonoBehaviour
     public Player[] GetPlayers()
     {
         return _players;
+    }
+
+    public Shop GetShop()
+    {
+        return this._shop;
     }
 }
