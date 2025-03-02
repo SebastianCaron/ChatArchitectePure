@@ -101,6 +101,7 @@ public class GameControlller : MonoBehaviour
             case EventEnum.CHAT_FEPLAISIR:
                 break;
             case EventEnum.CHAT_TASTROPHE:
+                _gatoEvento = new ChatTastrophe();
                 break;
         }
 

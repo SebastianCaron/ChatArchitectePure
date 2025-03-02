@@ -1447,8 +1447,8 @@ MonoBehaviour:
   delayForGold: 1
   goldAmount: 1
   events:
-  - {fileID: 11400000, guid: b3db580965a47d5acbcd807ee9c83865, type: 2}
-  delayEvent: 40
+  - {fileID: 11400000, guid: 9167a781e31ec9434ab4fc4bfc4de681, type: 2}
+  delayEvent: 20
   gameDuration: 120
   durationText: {fileID: 1898943268}
 --- !u!4 &1425001086

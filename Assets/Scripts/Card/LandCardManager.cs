@@ -363,4 +363,14 @@ public class LandCardManager : MonoBehaviour
     {
         _neighbours.Add(cardManager);
     }
+
+    public void ResetLand()
+    {
+        _cardOnLand.Clear();
+        UpdateDisplay();
+        _isFrozen = false;
+        _isProtected = false;
+        _containsBuilding = false;
+        _forGoldPlayer = _player;
+    }
 }
