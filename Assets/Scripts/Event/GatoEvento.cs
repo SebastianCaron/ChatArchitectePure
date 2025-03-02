@@ -8,6 +8,7 @@ public class GatoEvento : ScriptableObject
     public String eventDescription;
     public Sprite eventSprite;
     public float eventDuration;
-
+    public EventEnum eventType;
     public float[] values;
+    
 }

@@ -1446,7 +1446,8 @@ MonoBehaviour:
   champions: []
   delayForGold: 1
   goldAmount: 1
-  events: []
+  events:
+  - {fileID: 11400000, guid: b3db580965a47d5acbcd807ee9c83865, type: 2}
   delayEvent: 40
   gameDuration: 120
   durationText: {fileID: 1898943268}
@@ -1714,7 +1715,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1870,6 +1871,7 @@ MonoBehaviour:
   columnOffset: 0.5
   shopRefreshDelay: 10
   slider: {fileID: 750958566}
+  championPercentage: 0.05
 --- !u!4 &2049740743
 Transform:
   m_ObjectHideFlags: 0

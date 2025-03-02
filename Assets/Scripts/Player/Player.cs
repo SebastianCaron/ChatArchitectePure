@@ -55,12 +55,14 @@ public class Player : MonoBehaviour
     public void AddGold(int amount)
     {
         this._goldAmount += amount;
+        if (this._goldAmount < 0) _goldAmount = 0;
         RefreshGoldDisplay();
     }
 
     public void SetGold(int gold)
     {
         this._goldAmount = gold;
+        if (this._goldAmount < 0) _goldAmount = 0;
         RefreshGoldDisplay();
     }
 
@@ -72,6 +74,11 @@ public class Player : MonoBehaviour
     public Hand GetHand()
     {
         return this.handOfThePlayer;
+    }
+
+    public Land GetLand()
+    {
+        return this.landOfThePlayer;
     }
     
     public void UpdatePlayer(float deltaTime)

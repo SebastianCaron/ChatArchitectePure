@@ -107,4 +107,9 @@ public class Land : MonoBehaviour
     {
         this._player = player;
     }
+
+    public LandCardManager[,] GetLandCardManagers()
+    {
+        return this._landCardManagers;
+    }
 }

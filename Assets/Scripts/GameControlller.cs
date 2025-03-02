@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameControlller : MonoBehaviour
 {
@@ -70,6 +71,45 @@ public class GameControlller : MonoBehaviour
 
         gameDuration -= delta;
         if(durationText) durationText.SetText(Math.Round(gameDuration, 1).ToString());
+
+        _elapsedTimeEvent += delta;
+        if (_elapsedTimeEvent > delayEvent)
+        {
+            TriggerEvent();
+            _elapsedTimeEvent = 0;
+        }
+
+        if (_gatoEvento != null)
+        {
+            _gatoEvento.UpdateEvent(delta);
+            if (_gatoEvento.IsOver())
+            {
+                _gatoEvento.Finish();
+                _gatoEvento = null;
+            }
+        }
+    }
+
+    private void TriggerEvent()
+    {
+        GatoEvento evento = events[Random.Range(0, events.Length)];
+        switch (evento.eventType)
+        {
+            case EventEnum.CHAT_CGT:
+                _gatoEvento = new ChatCGT();
+                break;
+            case EventEnum.CHAT_FEPLAISIR:
+                break;
+            case EventEnum.CHAT_TASTROPHE:
+                break;
+        }
+
+        if (_gatoEvento != null)
+        {
+            // TODO : DISPLAY EVENT 
+            _gatoEvento.Init(this);
+            _gatoEvento.Execute();
+        }
     }
 
     private void Update()
@@ -92,5 +132,10 @@ public class GameControlller : MonoBehaviour
     public CardData[] GetChampions()
     {
         return this.champions;
+    }
+
+    public Player[] GetPlayers()
+    {
+        return _players;
     }
 }
