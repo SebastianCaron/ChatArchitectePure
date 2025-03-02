@@ -18,9 +18,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 32ad654b604901df980049a0dbdc8f28, type: 3}
   price: 3
   life: 0
-  damage: -10
+  damage: 10
   production: 0
   overtime: 0
   isChampion: 0
   alreadyBuy: 0
-  behaviours: 00000000
+  delay: 0
+  behaviour: 0
