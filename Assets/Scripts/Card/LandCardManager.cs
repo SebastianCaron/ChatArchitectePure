@@ -410,4 +410,9 @@ public class LandCardManager : MonoBehaviour
         _containsBuilding = false;
         _forGoldPlayer = _player;
     }
+
+    public List<Card> GetCardsOnLand()
+    {
+        return this._cardOnLand;
+    }
 }

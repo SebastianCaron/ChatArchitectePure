@@ -76,6 +76,17 @@ public class Hand : MonoBehaviour
         return true;
     }
 
+    public int NbCards()
+    {
+        int nb = 0;
+        for (int i = 0; i < nbCards; i++)
+        {
+            if (_cards[i] != null) nb++;
+        }
+
+        return nb;
+    }
+
     public void AddToHand(Card card)
     {
         for (int i = 0; i < nbCards; i++)
@@ -116,6 +127,11 @@ public class Hand : MonoBehaviour
     public Card[] GetCards()
     {
         return this._cards;
+    }
+
+    public ICardDisplayer[] GetCardDisplayers()
+    {
+        return this._hand;
     }
 
     public void ResetHand()

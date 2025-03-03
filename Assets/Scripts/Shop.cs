@@ -272,5 +272,30 @@ public class Shop : MonoBehaviour
     {
         return this._discount;
     }
+
+
+    public List<ICardDisplayer> GetCards()
+    {
+        List<ICardDisplayer> cardsClassique = new List<ICardDisplayer>();
+        foreach (ICardDisplayer cardDisplayer in _shopClassic)
+        {
+            if (cardDisplayer == null || cardDisplayer.GetCard() == null) continue;
+            cardsClassique.Add(cardDisplayer);
+        }
+
+        return cardsClassique;
+    }
+    
+    public List<ICardDisplayer> GetCardsUsed()
+    {
+        List<ICardDisplayer> cardsUsed = new List<ICardDisplayer>();
+        foreach (ICardDisplayer cardDisplayer in _shopUsed)
+        {
+            if (cardDisplayer == null || cardDisplayer.GetCard() == null) continue;
+            cardsUsed.Add(cardDisplayer);
+        }
+
+        return cardsUsed;
+    }
     
 }
