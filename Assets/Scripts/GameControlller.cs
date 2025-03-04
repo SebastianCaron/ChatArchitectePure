@@ -16,6 +16,8 @@ public class GameControlller : MonoBehaviour
 
     [SerializeField] private float gameDuration = 120f;
     [SerializeField] private TMP_Text durationText;
+
+    [SerializeField] private EventDisplayer eventDisplayer;
     
     private Player[] _players;
     private Shop _shop;
@@ -82,9 +84,11 @@ public class GameControlller : MonoBehaviour
         if (_gatoEvento != null)
         {
             _gatoEvento.UpdateEvent(delta);
+            eventDisplayer.UpdateDisplay(delta);
             if (_gatoEvento.IsOver())
             {
                 _gatoEvento.Finish();
+                eventDisplayer.SetEvento(null);
                 _gatoEvento = null;
             }
         }
@@ -108,7 +112,8 @@ public class GameControlller : MonoBehaviour
 
         if (_gatoEvento != null)
         {
-            // TODO : DISPLAY EVENT 
+            eventDisplayer.SetEvento(evento);
+            eventDisplayer.DisplayEvent();
             _gatoEvento.Init(this, evento);
             _gatoEvento.Execute();
         }

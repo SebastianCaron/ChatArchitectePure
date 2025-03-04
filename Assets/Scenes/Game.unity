@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1546,6 +1546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425001086}
   - component: {fileID: 1425001085}
+  - component: {fileID: 1425001087}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1598,6 +1599,7 @@ MonoBehaviour:
   delayEvent: 40
   gameDuration: 120
   durationText: {fileID: 1898943268}
+  eventDisplayer: {fileID: 1425001087}
 --- !u!4 &1425001086
 Transform:
   m_ObjectHideFlags: 0
@@ -1613,6 +1615,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1425001087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425001084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de01b8d8be41998e59da05a7211c7f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  image: {fileID: 0}
+  displayDuration: 5
 --- !u!1 &1462976236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,6 +2287,7 @@ MonoBehaviour:
   gridUsed: 04000000
   cardPrefab: {fileID: 1518378228403482345, guid: d409a21de1a006971b63b91a4233d646, type: 3}
   rowOffset: 2
+  rowUsedPadding: 1
   columnOffset: 0.5
   shopRefreshDelay: 10
   slider: {fileID: 750958566}
