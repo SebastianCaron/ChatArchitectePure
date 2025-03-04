@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633f54adf129e2618dcd3543b9fefd2, type: 3}
   m_Name: ChatTastrophe
   m_EditorClassIdentifier: 
-  eventName: Chat Tastrophe
+  eventName: 'Evenement :  Chat Tastrophe'
   eventDescription: "D\xE9truit toutes les cartes pr\xE9sentes sur les terrains."
-  eventSprite: {fileID: 21300000, guid: f6f457c7d1b83c3cb8eb96186bba9322, type: 3}
+  eventSprite: {fileID: -7031898807325353102, guid: 92236db21c6cc4919867e23cdd9d77e1, type: 3}
   eventDuration: 0
   eventType: 1
   values: []
