@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7633f54adf129e2618dcd3543b9fefd2, type: 3}
   m_Name: ChatFePlaisir
   m_EditorClassIdentifier: 
-  eventName: "Chat F\xE9pl\xE9zir"
+  eventName: "Evenement :  Chat F\xE9pl\xE9zir"
   eventDescription: -50% En boutique pendant 20sec
-  eventSprite: {fileID: 21300000, guid: e9c5f7337eb430c3f84cf41bdee7de36, type: 3}
+  eventSprite: {fileID: -4768713937633704906, guid: 2be36ecb248c54f8c98c3e6cb48261d5, type: 3}
   eventDuration: 20
   eventType: 2
   values:
