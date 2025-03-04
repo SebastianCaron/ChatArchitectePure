@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1598,6 +1598,7 @@ MonoBehaviour:
   delayEvent: 40
   gameDuration: 120
   durationText: {fileID: 1898943268}
+  eventDisplayer: {fileID: 0}
 --- !u!4 &1425001086
 Transform:
   m_ObjectHideFlags: 0
@@ -2270,6 +2271,7 @@ MonoBehaviour:
   gridUsed: 04000000
   cardPrefab: {fileID: 1518378228403482345, guid: d409a21de1a006971b63b91a4233d646, type: 3}
   rowOffset: 2
+  rowUsedPadding: 0
   columnOffset: 0.5
   shopRefreshDelay: 10
   slider: {fileID: 750958566}
