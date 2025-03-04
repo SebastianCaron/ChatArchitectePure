@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private int[] gridUsed = new[] { 4,4 };
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private float rowOffset = 1.5f;
+    [SerializeField] private float rowUsedPadding = 0f;
     [SerializeField] private float columnOffset = 1.2f;
     [SerializeField] private float shopRefreshDelay = 10.0f;
     [SerializeField] private Slider slider;
@@ -53,7 +54,7 @@ public class Shop : MonoBehaviour
             }
         }
         
-        float usedStartY = tTransform.position.y - (gridShopClassic.Length * rowOffset) - rowOffset;
+        float usedStartY = tTransform.position.y - (gridShopClassic.Length * rowOffset) - rowOffset + rowUsedPadding;
         for (int row = 0; row < gridUsed.Length; row++)
         {
             float rowWidth = gridUsed[row] * (cardWidth + columnOffset);
@@ -111,7 +112,7 @@ public class Shop : MonoBehaviour
             }
         }
 
-        float usedStartY = tTransform.position.y - gridShopClassic.Length * rowOffset - rowOffset;
+        float usedStartY = tTransform.position.y - gridShopClassic.Length * rowOffset - rowOffset + rowUsedPadding;
         float usedRowWidth = gridUsed[0] * (cardWidth + columnOffset);
         float usedStartX = tTransform.position.x - usedRowWidth / 2;
 
@@ -179,7 +180,7 @@ public class Shop : MonoBehaviour
     private Card GenerateCard()
     {
         CardData data;
-        if (Random.Range(0, 1) < championPercentage && _champions.Count > 0)
+        if (Random.Range(0.0f, 1.0f) < championPercentage && _champions.Count > 0)
         {
             data = _champions[Random.Range(0, _champions.Count)];
             _champions.Remove(data);
