@@ -27,7 +27,7 @@ public class EventDisplayer : MonoBehaviour
 
         if (text != null)
         {
-            text.text = _gatoEvento.name;
+            text.text = _gatoEvento.eventName;
             text.gameObject.SetActive(true);
         }
 
