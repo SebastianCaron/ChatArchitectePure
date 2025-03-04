@@ -97,6 +97,7 @@ public class Hand : MonoBehaviour
                 _cards[i].SetAllegeance(_player);
                 _cards[i].SetBuyable(false);
                 _hand[i].SetCard(_cards[i]);
+                _hand[i].HidePrice();
                 return;
             }
         }
