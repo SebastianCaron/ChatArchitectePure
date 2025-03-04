@@ -25,17 +25,32 @@ public class EventDisplayer : MonoBehaviour
         if (_gatoEvento == null) return;
         if (_elapsedTime >= displayDuration) return;
 
-        if(text != null) text.text = _gatoEvento.name;
-        if (image != null) image.sprite = _gatoEvento.eventSprite;
+        if (text != null)
+        {
+            text.text = _gatoEvento.name;
+            text.gameObject.SetActive(true);
+        }
+
+        if (image != null)
+        {
+            image.sprite = _gatoEvento.eventSprite;
+            image.gameObject.SetActive(true);
+        }
     }
 
     public void HideEvent()
     {
-        if (_gatoEvento == null) return;
-        if (_elapsedTime >= displayDuration) return;
+        if (text != null)
+        {
+            text.text = "";
+            text.gameObject.SetActive(false);
+        }
 
-        if(text != null) text.text = "";
-        if (image != null) image.sprite = null;
+        if (image != null)
+        {
+            image.sprite = null;
+            image.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateDisplay(float delta)

@@ -84,14 +84,15 @@ public class GameControlller : MonoBehaviour
         if (_gatoEvento != null)
         {
             _gatoEvento.UpdateEvent(delta);
-            eventDisplayer.UpdateDisplay(delta);
             if (_gatoEvento.IsOver())
             {
                 _gatoEvento.Finish();
-                eventDisplayer.SetEvento(null);
+                //eventDisplayer.HideEvent();
+                //eventDisplayer.SetEvento(null);
                 _gatoEvento = null;
             }
         }
+        eventDisplayer.UpdateDisplay(delta);
     }
 
     private void TriggerEvent()
