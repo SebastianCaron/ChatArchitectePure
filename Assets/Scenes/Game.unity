@@ -2541,6 +2541,8 @@ MonoBehaviour:
   gameDuration: 120
   durationText: {fileID: 1898943268}
   eventDisplayer: {fileID: 1425001087}
+  winnerMenu: {fileID: 1584038177}
+  winnerText: {fileID: 1272905704}
 --- !u!4 &1425001086
 Transform:
   m_ObjectHideFlags: 0
