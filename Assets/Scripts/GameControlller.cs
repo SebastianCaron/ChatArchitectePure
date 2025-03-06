@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +19,12 @@ public class GameControlller : MonoBehaviour
     [SerializeField] private TMP_Text durationText;
 
     [SerializeField] private EventDisplayer eventDisplayer;
+
+    [SerializeField] private GameObject winnerMenu;
+    [SerializeField] private TMP_Text winnerText;
+    
+    [SerializeField] private LogManager logManager;
+    
     
     private Player[] _players;
     private Shop _shop;
@@ -47,6 +54,7 @@ public class GameControlller : MonoBehaviour
             _players[i].InitSelecter();
         }
         
+        winnerMenu.SetActive(false);
     }
 
     private void GameUpdate()
@@ -93,6 +101,12 @@ public class GameControlller : MonoBehaviour
             }
         }
         eventDisplayer.UpdateDisplay(delta);
+
+        foreach (Player player in _players)
+        {
+            if(logManager != null) logManager.WriteLog($"{gameDuration:0.00}, {player.gameObject.name}, {player.GetGold()}");
+        }
+        
     }
 
     private void TriggerEvent()
@@ -129,6 +143,30 @@ public class GameControlller : MonoBehaviour
         else
         {
             // TODO : DISPLAY WINNER & DATAS
+            winnerMenu.SetActive(true);
+            winnerText.text = "Le gagnant est : ";
+            int maxiGold = Int32.MinValue;
+            List<Player> winners = new List<Player>();
+            foreach (Player player in _players)
+            {
+                if (player.GetGold() > maxiGold)
+                {
+                    winners.Clear();
+                    winners.Add(player);
+                    maxiGold = player.GetGold();
+                }
+                else if (player.GetGold() == maxiGold)
+                {
+                    winners.Add(player);
+                }
+            }
+
+            for (int i = 0; i < winners.Count - 1; i++)
+            {
+                winnerText.text += winners[i].gameObject.name + ", ";
+            }
+
+            winnerText.text += winners[^1].gameObject.name + ".";
         }
     }
 
