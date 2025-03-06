@@ -55,6 +55,8 @@ public class GameControlller : MonoBehaviour
         }
         
         winnerMenu.SetActive(false);
+        
+        logManager.Init();
     }
 
     private void GameUpdate()
@@ -188,5 +190,12 @@ public class GameControlller : MonoBehaviour
     public Shop GetShop()
     {
         return this._shop;
+    }
+
+    public void Forfeit(Player player)
+    {
+        // IMPLEMENTATION FOR 2 PLAYERS
+        gameDuration = 0;
+        player.SetGold(-999999);
     }
 }

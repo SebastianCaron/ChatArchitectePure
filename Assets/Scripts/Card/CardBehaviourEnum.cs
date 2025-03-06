@@ -18,5 +18,9 @@ public enum CardBehaviourEnum
     MULTIPLY_PRODUCTION,
     MOVE, 
     STEAL_ALL_CARDS,
-    DESTROY_ALL_CARDS
+    DESTROY_ALL_CARDS,
+    
+    REVIVE,
+    ABSORB,
+    RELENTLESS
 }

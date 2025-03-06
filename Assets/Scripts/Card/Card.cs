@@ -13,6 +13,7 @@ public class Card
     private float _damage;
     private int _production;
     private float _delay;
+    private bool _nRevived;
 
     private Player _allegeance = null;
     private bool _isBuyable = true;
@@ -69,6 +70,16 @@ public class Card
         return this._life <= 0;
     }
 
+    public bool HasAlreadyRevived()
+    {
+        return this._nRevived;
+    }
+
+    public void SetRevived(bool revived)
+    {
+        this._nRevived = revived;
+    }
+    
     public bool IsBuyableBy(Player player)
     {
         return (this._allegeance != player && this._isBuyable);

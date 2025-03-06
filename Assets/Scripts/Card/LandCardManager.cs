@@ -13,6 +13,7 @@ public class LandCardManager : MonoBehaviour
     private bool _containsBuilding = false;
     private Player _player;
     private Player _forGoldPlayer;
+    private bool _protectFromNextDamage = false;
 
     private void Awake()
     {
@@ -74,6 +75,41 @@ public class LandCardManager : MonoBehaviour
             _player.GetShop().AddCardToUsed(card);
             return;
         }
+        
+        // TYPE ABSORB
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.ABSORB &&
+            card.GetDefinition().type == CardTypeEnum.SUPPORT &&
+            ContainsBuilding())
+        {
+            this._protectFromNextDamage = true;
+            _player.GetShop().AddCardToUsed(card);
+            return;
+        }
+        
+        // TYPE RELENTLESS
+        if (!_isProtected &&
+            card.GetDefinition().behaviour == CardBehaviourEnum.RELENTLESS &&
+            card.GetDefinition().type == CardTypeEnum.ATTACK &&
+            ContainsBuilding())
+        {
+            Card building = GetBuilding();
+            building.SetLife(building.GetLife() - card.GetDamage());
+            building.SetLife(building.GetLife() - card.GetDamage());
+            _player.GetShop().AddCardToUsed(card);
+            return;
+        }
+        
+        // TYPE REVIVE
+        if (card.GetDefinition().behaviour == CardBehaviourEnum.REVIVE &&
+            card.GetDefinition().type == CardTypeEnum.BUILDING &&
+            !ContainsBuilding())
+        {
+            _cardOnLand.Insert(0, card);
+            _containsBuilding = true;
+            UpdateDisplay();
+            return;
+        }
+        
         // TYPE CHAT-MIKAZE - CHAT RAGE
         if (!_isProtected &&
             card.GetDefinition().behaviour == CardBehaviourEnum.DAMAGE &&
@@ -253,13 +289,17 @@ public class LandCardManager : MonoBehaviour
     {
         if (_cardOnLand.Count <= 0) return;
         if (_isProtected) return;
+        if (_protectFromNextDamage)
+        {
+            _protectFromNextDamage = false;
+            return;
+        }
 
         Card building = GetBuilding();
         building.SetLife(building.GetLife() - damage);
 
         if (building.IsDead())
         {
-            _cardOnLand.Remove(building);
             OnDeath(building);
         }
         
@@ -360,8 +400,20 @@ public class LandCardManager : MonoBehaviour
             case CardBehaviourEnum.FREEZE_FUNCTION:
                 SetFrozen(false);
                 break;
+            case CardBehaviourEnum.REVIVE:
+                if (card.HasAlreadyRevived())
+                {
+                    break;
+                }
+                else
+                {
+                    card.SetLife(card.GetDefinition().life);
+                    card.SetRevived(true);
+                    return;
+                }
+                
         }
-        
+        _cardOnLand.Remove(card);
         _player.GetShop().AddCardToUsed(card);
     }
 
