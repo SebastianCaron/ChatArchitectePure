@@ -23,6 +23,9 @@ public class GameControlller : MonoBehaviour
     [SerializeField] private GameObject winnerMenu;
     [SerializeField] private TMP_Text winnerText;
     
+    [SerializeField] private LogManager logManager;
+    
+    
     private Player[] _players;
     private Shop _shop;
     private float _elapsedTime = 0.0f;
@@ -98,6 +101,12 @@ public class GameControlller : MonoBehaviour
             }
         }
         eventDisplayer.UpdateDisplay(delta);
+
+        foreach (Player player in _players)
+        {
+            if(logManager != null) logManager.WriteLog($"{gameDuration:0.00}, {player.gameObject.name}, {player.GetGold()}");
+        }
+        
     }
 
     private void TriggerEvent()

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Land landOfThePlayer;
     [SerializeField] private Selecter selecterOfThePlayer;
     [SerializeField] private TMP_Text goldText;
-
+    
     private Shop _shop;
     private int _goldAmount = 100;
     private float _moveDelay = 0.0f;
