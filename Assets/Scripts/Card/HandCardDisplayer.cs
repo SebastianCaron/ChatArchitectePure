@@ -19,7 +19,7 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         this._card = card;
         RefreshDisplay();
-        if (card.GetDefinition().audio != null)
+        if (card != null && audioSource != null && card.GetDefinition().audio != null)
         {
             audioSource.clip = card.GetDefinition().audio;
             audioSource.Play();

@@ -26,7 +26,7 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
         this._card = card;
         if(this._card != null) this.slider.maxValue = this._card.GetDefinition().life;
         RefreshDisplay();
-        if (card.GetDefinition().audio != null)
+        if (card != null && audioSource != null && card.GetDefinition().audio != null)
         {
             audioSource.clip = card.GetDefinition().audio;
             audioSource.Play();

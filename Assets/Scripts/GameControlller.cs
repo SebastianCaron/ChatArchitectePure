@@ -24,20 +24,21 @@ public class GameControlller : MonoBehaviour
     [SerializeField] private TMP_Text winnerText;
     
     [SerializeField] private LogManager logManager;
+    [SerializeField] private Shop shop;
     
     
     private Player[] _players;
-    private Shop _shop;
+    
     private float _elapsedTime = 0.0f;
     private IGatoEvento _gatoEvento = null;
     private float _elapsedTimeEvent = 0.0f;
+    private bool _over = false;
     
     private void Awake()
     {
-        _shop = GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>();
-        _shop.SetDefinitions(cardsDefinition);
-        _shop.SetChampions(champions);
-        _shop.Init();
+        shop.SetDefinitions(cardsDefinition);
+        shop.SetChampions(champions);
+        shop.Init();
         
         GameObject[] playersGameObject = GameObject.FindGameObjectsWithTag("Player");
         _players = new Player[playersGameObject.Length];
@@ -46,7 +47,7 @@ public class GameControlller : MonoBehaviour
         {
             _players[i] = playersGameObject[i].GetComponent<Player>();
             _players[i].Init();
-            _players[i].SetShop(_shop);
+            _players[i].SetShop(shop);
         }
         
         for (int i = 0; i < playersGameObject.Length; i++)
@@ -74,7 +75,7 @@ public class GameControlller : MonoBehaviour
             _elapsedTime = 0;
         }
         
-        _shop.UpdateShop(delta);
+        shop.UpdateShop(delta);
         
         foreach (Player player in _players)
         {
@@ -106,7 +107,7 @@ public class GameControlller : MonoBehaviour
 
         foreach (Player player in _players)
         {
-            if(logManager != null) logManager.WriteLog($"{gameDuration:0.00}, {player.gameObject.name}, {player.GetGold()}");
+            if(logManager != null) logManager.WriteLog(gameDuration,player.gameObject.name, player.GetGold());
         }
         
     }
@@ -145,6 +146,7 @@ public class GameControlller : MonoBehaviour
         else
         {
             // TODO : DISPLAY WINNER & DATAS
+            if (_over) return;
             winnerMenu.SetActive(true);
             winnerText.text = "Le gagnant est : ";
             int maxiGold = Int32.MinValue;
@@ -169,6 +171,8 @@ public class GameControlller : MonoBehaviour
             }
 
             winnerText.text += winners[^1].gameObject.name + ".";
+            logManager.GenerateImageFromLogs();
+            _over = true;
         }
     }
 
@@ -189,7 +193,7 @@ public class GameControlller : MonoBehaviour
 
     public Shop GetShop()
     {
-        return this._shop;
+        return this.shop;
     }
 
     public void Forfeit(Player player)
