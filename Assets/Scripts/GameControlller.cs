@@ -68,7 +68,7 @@ public class GameControlller : MonoBehaviour
         {
             foreach (Player player in _players)
             {
-                player.AddGold(goldAmount);
+                if(!player.GetForfeit()) player.AddGold(goldAmount);
             }
 
             _elapsedTime = 0;
@@ -78,7 +78,7 @@ public class GameControlller : MonoBehaviour
         
         foreach (Player player in _players)
         {
-            player.UpdatePlayer(delta);
+            if(!player.GetForfeit()) player.UpdatePlayer(delta);
         }
 
         gameDuration -= delta;
@@ -151,7 +151,7 @@ public class GameControlller : MonoBehaviour
             List<Player> winners = new List<Player>();
             foreach (Player player in _players)
             {
-                if (player.GetGold() > maxiGold)
+                if (!player.GetForfeit() && player.GetGold() > maxiGold)
                 {
                     winners.Clear();
                     winners.Add(player);
@@ -194,8 +194,19 @@ public class GameControlller : MonoBehaviour
 
     public void Forfeit(Player player)
     {
-        // IMPLEMENTATION FOR 2 PLAYERS
-        gameDuration = 0;
+        Debug.Log(player.gameObject.name + " Forfeit!");
         player.SetGold(-999999);
+        player.SetForfeit(true);
+
+        int nb = 0;
+        foreach (Player mpl in _players)
+        {
+            if (!mpl.GetForfeit()) nb++;
+        }
+
+        if (nb <= 1)
+        {
+            gameDuration = 0;
+        }
     }
 }

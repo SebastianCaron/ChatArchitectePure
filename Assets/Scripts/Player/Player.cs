@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Shop _shop;
     private int _goldAmount = 100;
     private float _moveDelay = 0.0f;
+    private bool _forfeit = false;
 
     public GameObject GetGameObject()
     {
@@ -91,5 +92,15 @@ public class Player : MonoBehaviour
     public void SetFreeze(float amount)
     {
         this._moveDelay = amount;
+    }
+
+    public void SetForfeit(bool forfeit)
+    {
+        this._forfeit = forfeit;
+    }
+
+    public bool GetForfeit()
+    {
+        return this._forfeit;
     }
 }
