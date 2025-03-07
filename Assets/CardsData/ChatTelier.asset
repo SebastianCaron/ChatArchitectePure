@@ -19,9 +19,10 @@ MonoBehaviour:
   price: 5
   life: 20
   damage: 0
-  production: 0
+  production: 3
   overtime: 0
   isChampion: 0
   alreadyBuy: 0
-  delay: 0
+  delay: 1
   behaviour: 12
+  audio: {fileID: 0}
