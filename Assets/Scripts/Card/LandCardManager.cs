@@ -72,7 +72,7 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetLife(building.GetLife() + card.GetDamage());
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             return;
         }
         
@@ -82,7 +82,7 @@ public class LandCardManager : MonoBehaviour
             ContainsBuilding())
         {
             this._protectFromNextDamage = true;
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             return;
         }
         
@@ -95,7 +95,7 @@ public class LandCardManager : MonoBehaviour
             Card building = GetBuilding();
             building.SetLife(building.GetLife() - card.GetDamage());
             building.SetLife(building.GetLife() - card.GetDamage());
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             return;
         }
         
@@ -116,9 +116,10 @@ public class LandCardManager : MonoBehaviour
             card.GetDefinition().type == CardTypeEnum.ATTACK &&
             ContainsBuilding())
         {
-            Card building = GetBuilding();
-            building.SetLife(building.GetLife() - card.GetDamage());
-            _player.GetShop().AddCardToUsed(card);
+            //Card building = GetBuilding();
+            MakeDamage(card.GetDamage());
+            //building.SetLife(building.GetLife() - card.GetDamage());
+            AddToUsedShop(card);
             return;
         }
         // TYPE CHAT-ARCHITECTE
@@ -128,7 +129,7 @@ public class LandCardManager : MonoBehaviour
         {
             Card building = GetBuilding();
             building.SetProduction(building.GetProduction() * card.GetProduction());
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             return;
         }
         // TYPE CHAT-MURAILLE
@@ -214,7 +215,7 @@ public class LandCardManager : MonoBehaviour
             {
                 neighbour.MakeDamage(card.GetDamage());
             }
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             return;
         }
         // TYPE LITIERE
@@ -232,7 +233,7 @@ public class LandCardManager : MonoBehaviour
             card.GetDefinition().type == CardTypeEnum.SUPPORT &&
             ContainsBuilding())
         {
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             card.GetAllegeance().GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
             return;
         }
@@ -241,7 +242,7 @@ public class LandCardManager : MonoBehaviour
             card.GetDefinition().type == CardTypeEnum.ATTACK &&
             ContainsBuilding())
         {
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             card.GetAllegeance().GetHand().AddToHand(new Card(GetBuilding().GetDefinition()));
             ResetLand();
             return;
@@ -251,7 +252,7 @@ public class LandCardManager : MonoBehaviour
         if (card.GetDefinition().behaviour == CardBehaviourEnum.FREEZE_PLAYER &&
             card.GetDefinition().type == CardTypeEnum.ATTACK)
         {
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             _player.SetFreeze(card.GetLife());
             return;
         }
@@ -260,7 +261,7 @@ public class LandCardManager : MonoBehaviour
         if (card.GetDefinition().behaviour == CardBehaviourEnum.STEAL_ALL_CARDS &&
             card.GetDefinition().type == CardTypeEnum.ATTACK)
         {
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
             _player.GetHand().ResetHand();
             return;
         }
@@ -269,7 +270,7 @@ public class LandCardManager : MonoBehaviour
         if (card.GetDefinition().behaviour == CardBehaviourEnum.DESTROY_ALL_CARDS &&
             card.GetDefinition().type == CardTypeEnum.ATTACK)
         {
-            _player.GetShop().AddCardToUsed(card);
+            AddToUsedShop(card);
 
             Land land = _player.GetLand();
             LandCardManager[,] landCardManagers = land.GetLandCardManagers();
@@ -345,6 +346,7 @@ public class LandCardManager : MonoBehaviour
     private void UpdateDisplay()
     {
         if (!_containsBuilding) return;
+        if (_cardDisplayer == null) return;
         bool isSet = false;
         for (int i = 0; i < _cardOnLand.Count; i++)
         {
@@ -409,12 +411,14 @@ public class LandCardManager : MonoBehaviour
                 {
                     card.SetLife(card.GetDefinition().life);
                     card.SetRevived(true);
+                    this._containsBuilding = true;
+                    UpdateDisplay();
                     return;
                 }
                 
         }
         _cardOnLand.Remove(card);
-        _player.GetShop().AddCardToUsed(card);
+        AddToUsedShop(card);
     }
 
     private void UseEffect(Card card)
@@ -446,6 +450,12 @@ public class LandCardManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void AddToUsedShop(Card card)
+    {
+        if (_player == null) return;
+        _player.GetShop().AddCardToUsed(card);
     }
 
     public void AddNeighbour(LandCardManager cardManager)
