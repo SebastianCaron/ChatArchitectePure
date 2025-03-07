@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [CreateAssetMenu(fileName = "CardData", menuName = "ChatArchitecte/CardData")]
 public class CardData : ScriptableObject
@@ -20,4 +21,5 @@ public class CardData : ScriptableObject
     public float delay;
 
     public CardBehaviourEnum behaviour;
+    public AudioClip audio;
 }

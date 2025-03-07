@@ -8,6 +8,7 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer colorRenderer;
+    [SerializeField] private AudioSource audioSource;
     
     private Card _card;
     private bool _isSelected = false;
@@ -18,6 +19,11 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         this._card = card;
         RefreshDisplay();
+        if (card.GetDefinition().audio != null)
+        {
+            audioSource.clip = card.GetDefinition().audio;
+            audioSource.Play();
+        }
     }
 
     public Card GetCard()

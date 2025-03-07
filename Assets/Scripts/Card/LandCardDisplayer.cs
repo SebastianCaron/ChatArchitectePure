@@ -9,7 +9,8 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Slider slider;
     [SerializeField] private SpriteRenderer colorRenderer;
-
+    [SerializeField] private AudioSource audioSource;
+    
     private Card _card;
     private Color _oldColor;
     private LandCardManager _manager;
@@ -25,6 +26,11 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
         this._card = card;
         if(this._card != null) this.slider.maxValue = this._card.GetDefinition().life;
         RefreshDisplay();
+        if (card.GetDefinition().audio != null)
+        {
+            audioSource.clip = card.GetDefinition().audio;
+            audioSource.Play();
+        }
     }
 
     public Card GetCard()
