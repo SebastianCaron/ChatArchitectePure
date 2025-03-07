@@ -11,6 +11,7 @@ public class GameControlller : MonoBehaviour
     
     [SerializeField] private float delayForGold = 1.0f;
     [SerializeField] private int goldAmount = 1;
+    [SerializeField] private int goldStart = 15;
     
     [SerializeField] private GatoEvento[] events;
     [SerializeField] private float delayEvent = 40f;
@@ -48,6 +49,7 @@ public class GameControlller : MonoBehaviour
             _players[i] = playersGameObject[i].GetComponent<Player>();
             _players[i].Init();
             _players[i].SetShop(shop);
+            _players[i].SetGold(goldStart);
         }
         
         for (int i = 0; i < playersGameObject.Length; i++)

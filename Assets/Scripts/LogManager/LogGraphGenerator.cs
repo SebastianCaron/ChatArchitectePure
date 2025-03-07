@@ -7,21 +7,21 @@ public class LogGraphGenerator : MonoBehaviour
 {
     [SerializeField] private LogManager logManager;
     [SerializeField] private Image graphImage;
-    [SerializeField] private int textureWidth = 200;
-    [SerializeField] private int textureHeight = 200;
+    
     [SerializeField] private Color backgroundColor = Color.black;
 
-    private Texture2D graphTexture;
-
-    private List<Color> playerColors = new List<Color>
+    private Texture2D _graphTexture;
+    private int _textureWidth = 200;
+    private int _textureHeight = 200;
+    private List<Color> _playerColors = new List<Color>
     {
         Color.magenta, Color.yellow, Color.blue, Color.green, 
         Color.cyan, Color.red, Color.white, Color.gray
     };
 
-    private Dictionary<string, Color> assignedColors = new Dictionary<string, Color>();
-    private float maxTime = Int32.MinValue;
-    private int maxMoney = Int32.MinValue;
+    private Dictionary<string, Color> _assignedColors = new Dictionary<string, Color>();
+    private float _maxTime = Int32.MinValue;
+    private int _maxMoney = Int32.MinValue;
 
     private void Start()
     {
@@ -36,11 +36,11 @@ public class LogGraphGenerator : MonoBehaviour
             return;
         }
         
-        graphTexture = new Texture2D(textureWidth, textureHeight);
-        ClearTexture();
+        
 
         var playerLogs = logManager.GetPlayerLogs();
         int colorIndex = 0;
+        
         
         foreach (var playerEntry in playerLogs)
         {
@@ -49,41 +49,47 @@ public class LogGraphGenerator : MonoBehaviour
                 float time = entry.Key;
                 int money = entry.Value;
 
-                if (time > maxTime)
+                if (time > _maxTime)
                 {
-                    maxTime = time;
+                    _maxTime = time;
                 }
 
-                if (money > maxMoney)
+                if (money > _maxMoney)
                 {
-                    maxMoney = money;
+                    _maxMoney = money;
                 }
             }
+
+            _textureWidth = Mathf.Clamp(playerEntry.Value.Count / 4, 200,600);
+            _textureHeight = Mathf.Clamp(playerEntry.Value.Count / 4, 200,600);
         }
+        
+        _graphTexture = new Texture2D(_textureWidth, _textureHeight);
+        ClearTexture();
 
         foreach (var playerEntry in playerLogs)
         {
             string playerName = playerEntry.Key;
 
-            if (!assignedColors.ContainsKey(playerName))
+            if (!_assignedColors.ContainsKey(playerName))
             {
-                assignedColors[playerName] = playerColors[colorIndex % playerColors.Count];
+                _assignedColors[playerName] = _playerColors[colorIndex % _playerColors.Count];
                 colorIndex++;
             }
 
-            DrawPlayerGraph(playerEntry.Value, assignedColors[playerName]);
+            DrawPlayerGraph(playerEntry.Value, _assignedColors[playerName]);
         }
 
-        graphTexture.Apply();
-        graphImage.sprite = Sprite.Create(graphTexture, new Rect(0, 0, textureWidth, textureHeight), Vector2.zero);
+        _graphTexture.Apply();
+        graphImage.sprite = Sprite.Create(_graphTexture, new Rect(0, 0, _textureWidth, _textureHeight), Vector2.zero);
     }
 
     private void ClearTexture()
     {
-        Color[] colors = new Color[textureWidth * textureHeight];
+        Color[] colors = new Color[_textureWidth * _textureHeight];
         for (int i = 0; i < colors.Length; i++)
             colors[i] = backgroundColor;
-        graphTexture.SetPixels(colors);
+        _graphTexture.SetPixels(colors);
     }
 
     private void DrawPlayerGraph(Dictionary<float, int> logEntries, Color playerColor)
@@ -96,8 +102,8 @@ public class LogGraphGenerator : MonoBehaviour
             int money = entry.Value;
             //Debug.Log(entry);
 
-            int x = Mathf.Clamp(Mathf.RoundToInt((maxTime-time) / maxTime *  textureWidth), 0, textureWidth - 1);
-            int y = Mathf.Clamp(Mathf.RoundToInt((money  *  textureHeight) / maxMoney), 0, textureHeight - 1);
+            int x = Mathf.Clamp(Mathf.RoundToInt((_maxTime-time) / _maxTime *  _textureWidth), 0, _textureWidth - 1);
+            int y = Mathf.Clamp(Mathf.RoundToInt((money  *  _textureHeight) / _maxMoney), 0, _textureHeight - 1);
 
             points.Add(new Vector2(x, y));
         }
@@ -110,7 +116,7 @@ public class LogGraphGenerator : MonoBehaviour
         for (int i = 1; i < points.Count; i++)
         {
             //Debug.Log(points[i]);
-            //graphTexture.SetPixel((int)points[i].x, (int)points[i].y, playerColor);
+            //_graphTexture.SetPixel((int)points[i].x, (int)points[i].y, playerColor);
             DrawLine((int)points[i - 1].x, (int)points[i - 1].y, (int)points[i].x, (int)points[i].y, playerColor);
         }
     }
@@ -123,7 +129,7 @@ public class LogGraphGenerator : MonoBehaviour
 
         while (true)
         {
-            graphTexture.SetPixel(x0, y0, color);
+            _graphTexture.SetPixel(x0, y0, color);
             if (x0 == x1 && y0 == y1) break;
             e2 = 2 * err;
             if (e2 >= dy) { err += dy; x0 += sx; }
