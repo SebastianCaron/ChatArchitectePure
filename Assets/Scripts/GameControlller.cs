@@ -56,6 +56,15 @@ public class GameControlller : MonoBehaviour
         {
             _players[i].InitSelecter();
         }
+
+        for (int i = 0; i < _players.Length; i++)
+        {
+            RandomAgent rd = _players[i].gameObject.GetComponent<RandomAgent>();
+            if (rd != null)
+            {
+                rd.Init();
+            }
+        }
         
         winnerMenu.SetActive(false);
         

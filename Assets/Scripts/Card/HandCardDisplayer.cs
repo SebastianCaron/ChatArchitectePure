@@ -126,4 +126,9 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         return this._player;
     }
+
+    public ISelectable GetSelectable()
+    {
+        return this;
+    }
 }

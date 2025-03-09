@@ -426,7 +426,27 @@ public class LandCardManager : MonoBehaviour
         switch (card.GetDefinition().behaviour)
         {
             case CardBehaviourEnum.PRODUCTION_GOLD:
-                if(!_isFrozen) _forGoldPlayer.AddGold(card.GetProduction());
+                if (!_isFrozen)
+                {
+                    if (_forGoldPlayer == _player)
+                    {
+                        int amount = card.GetProduction();
+                        if (card.GetAllegeance() != _player)
+                        {
+                            amount = (int)(card.GetProduction() * 0.8f);
+                        }
+                        card.GetAllegeance().AddGold(amount);
+                    }
+                    else
+                    {
+                        int amount = card.GetProduction();
+                        if (card.GetAllegeance() != _player)
+                        {
+                            amount = (int)(card.GetProduction() * 0.8f);
+                        }
+                        _forGoldPlayer.AddGold(amount);
+                    }
+                }
                 break;
             case CardBehaviourEnum.DAMAGE_OVERTIME:
                 MakeDamage(card.GetDamage());
@@ -476,5 +496,10 @@ public class LandCardManager : MonoBehaviour
     public List<Card> GetCardsOnLand()
     {
         return this._cardOnLand;
+    }
+
+    public LandCardDisplayer GetCardDisplayer()
+    {
+        return this._cardDisplayer;
     }
 }

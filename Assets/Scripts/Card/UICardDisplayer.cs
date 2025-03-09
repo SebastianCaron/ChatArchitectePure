@@ -91,4 +91,9 @@ public class UICardDisplayer : MonoBehaviour, ICardDisplayer
         return true;
     }
     
+    public ISelectable GetSelectable()
+    {
+        return null;
+    }
+    
 }

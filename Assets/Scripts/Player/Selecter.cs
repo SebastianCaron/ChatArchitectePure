@@ -22,7 +22,8 @@ public class Selecter : MonoBehaviour
     private Dictionary<GameObject, List<List<ISelectable>>> _selectables = new Dictionary<GameObject, List<List<ISelectable>>>();
     private Dictionary<GameObject, List<GameObject>> _behaviours = new Dictionary<GameObject, List<GameObject>>();
     private List<ISelectable> _selection = new List<ISelectable>();
-
+    private List<List<ISelectable>> _grid;
+    
     private void GetSelectables()
     {
         foreach (GameObject group in groupsOfSelectables)
@@ -33,10 +34,17 @@ public class Selecter : MonoBehaviour
             foreach (Transform child in group.transform)
             {
                 ISelectable selectable = child.gameObject.GetComponent<HandCardDisplayer>();
-                if (selectable != null) children.Add(selectable);
+                if (selectable != null)
+                {
+                    children.Add(selectable);
+                }
                 
                 selectable = child.gameObject.GetComponent<LandCardDisplayer>();
-                if (selectable != null) children.Add(selectable);
+                if (selectable != null)
+                {
+                    
+                    children.Add(selectable);
+                }
             }
 
             List<List<ISelectable>> grid = children
@@ -104,6 +112,8 @@ public class Selecter : MonoBehaviour
 
             _behaviours[group] = behaviour;
         }
+        
+
     }
 
 
@@ -223,8 +233,22 @@ public class Selecter : MonoBehaviour
             _selection.Add(_currentSelectable);
             HandleSelection();
         }
-        
-        
+    }
+
+    public void GoDirection(Directions direction)
+    {
+        SelectInThisZone(_current, direction);
+    }
+
+    public void Select()
+    {
+        _selection.Add(_currentSelectable);
+        HandleSelection();
+    }
+
+    public GameObject[] GetGroupOfSelectables()
+    {
+        return this.groupsOfSelectables;
     }
 
     public void Init()
@@ -240,6 +264,11 @@ public class Selecter : MonoBehaviour
             SelectInThisZone(_current, Directions.NODIRECTION);
             //Debug.Log($"Sélection initiale : {_current.name}");
         }
+    }
+
+    public ISelectable GetPositionSelectable()
+    {
+        return _currentSelectable;
     }
 
     private void HandleSelection()

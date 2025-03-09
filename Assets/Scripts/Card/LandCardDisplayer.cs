@@ -117,4 +117,8 @@ public class LandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
     {
         return this._manager.GetPlayer();
     }
+    public ISelectable GetSelectable()
+    {
+        return this;
+    }
 }

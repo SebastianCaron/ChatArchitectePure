@@ -9,4 +9,8 @@ public interface ICardDisplayer
 
     public Player GetPlayer();
     public void SetPlayer(Player player);
+
+    public GameObject GetGameObject();
+
+    public ISelectable GetSelectable();
 }

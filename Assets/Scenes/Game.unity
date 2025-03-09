@@ -2811,7 +2811,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b02b4430b0c6089969d3eb93860664d6, type: 2}
   delayForGold: 1
   goldAmount: 1
-  goldStart: 15
+  goldStart: 25
   events:
   - {fileID: 11400000, guid: 9d2bf1b57163c81b8898346c149f35c6, type: 2}
   - {fileID: 11400000, guid: 9167a781e31ec9434ab4fc4bfc4de681, type: 2}
@@ -2969,6 +2969,8 @@ GameObject:
   - component: {fileID: 1462976238}
   - component: {fileID: 1462976237}
   - component: {fileID: 1462976239}
+  - component: {fileID: 1462976241}
+  - component: {fileID: 1462976240}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -3026,6 +3028,36 @@ MonoBehaviour:
   player: {fileID: 1462976237}
   delay: 2
   controlller: {fileID: 1425001085}
+--- !u!114 &1462976240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462976236}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0d434eb694a6654b2e5a7d9580a699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1462976237}
+  selecter: {fileID: 1597445681}
+  delay: 0.2
+  controller: {fileID: 1425001085}
+  graphGenerator: {fileID: 1462976241}
+--- !u!114 &1462976241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462976236}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc04993125245f9d99976787a8589ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupsOfSelectables: []
 --- !u!1 &1528037022
 GameObject:
   m_ObjectHideFlags: 0

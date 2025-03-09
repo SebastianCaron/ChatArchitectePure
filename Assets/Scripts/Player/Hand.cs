@@ -135,6 +135,11 @@ public class Hand : MonoBehaviour
         return this._hand;
     }
 
+    public ISelectable[] GetCardSelectable()
+    {
+        return this._handSelectable;
+    }
+    
     public void ResetHand()
     {
         for (int i = 0; i < nbCards; i++)
