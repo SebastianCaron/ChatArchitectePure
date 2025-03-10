@@ -60,7 +60,7 @@ public class RandomAgent : MonoBehaviour
             // SELECT CARD
             // GO TO FIRST LAND AVAILABLE
 
-            if (_actd >= 25)
+            if (_actd >= 40)
             {
                 Debug.Log("RESET!");
                 _from = null;

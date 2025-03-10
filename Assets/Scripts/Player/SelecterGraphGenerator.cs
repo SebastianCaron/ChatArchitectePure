@@ -60,17 +60,17 @@ public class SelecterGraphGenerator : MonoBehaviour
                     minLeft = distance;
                     left = candidate.Key;
                 }
-                else if (deltaX > 0 && distance < minRight)
+                if (deltaX > 0 && distance < minRight)
                 {
                     minRight = distance;
                     right = candidate.Key;
                 }
-                else if (deltaY > 0 && distance < minUp)
+                if (deltaY > 0 && distance < minUp)
                 {
                     minUp = distance;
                     up = candidate.Key;
                 }
-                else if (deltaY < 0 && distance < minDown)
+                if (deltaY < 0 && distance < minDown)
                 {
                     minDown = distance;
                     down = candidate.Key;
