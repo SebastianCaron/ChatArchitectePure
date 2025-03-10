@@ -53,6 +53,7 @@ public class RandomAgent : MonoBehaviour
             if (!BuyCard())
             {
                 _buyMode = false;
+                _actd = 0;
             }
         }
         else
@@ -60,7 +61,7 @@ public class RandomAgent : MonoBehaviour
             // SELECT CARD
             // GO TO FIRST LAND AVAILABLE
 
-            if (_actd >= 40)
+            if (_actd >= 20)
             {
                 Debug.Log("RESET!");
                 _from = null;

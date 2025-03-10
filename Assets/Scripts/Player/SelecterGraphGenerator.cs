@@ -55,26 +55,28 @@ public class SelecterGraphGenerator : MonoBehaviour
                 float deltaY = otherTransform.position.y - _transform.position.y;
                 float distance = candidate.Value;
                 
-                if (deltaX < 0 && distance < minLeft)
-                {
-                    minLeft = distance;
-                    left = candidate.Key;
-                }
                 if (deltaX > 0 && distance < minRight)
                 {
                     minRight = distance;
                     right = candidate.Key;
                 }
-                if (deltaY > 0 && distance < minUp)
+                else if (deltaX < 0 && distance < minLeft)
                 {
-                    minUp = distance;
-                    up = candidate.Key;
+                    minLeft = distance;
+                    left = candidate.Key;
                 }
+                
                 if (deltaY < 0 && distance < minDown)
                 {
                     minDown = distance;
                     down = candidate.Key;
                 }
+                else if (deltaY > 0 && distance < minUp)
+                {
+                    minUp = distance;
+                    up = candidate.Key;
+                }
+                
             }
 
             _graph[selectable] = new List<ISelectable> { left, up, right, down };
