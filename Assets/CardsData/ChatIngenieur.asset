@@ -25,3 +25,4 @@ MonoBehaviour:
   alreadyBuy: 0
   delay: 0
   behaviour: 0
+  audio: {fileID: 8300000, guid: a152752827562c55c9a27f7f9a6758bf, type: 3}
