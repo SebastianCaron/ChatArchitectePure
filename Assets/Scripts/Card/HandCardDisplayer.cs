@@ -22,7 +22,7 @@ public class HandCardDisplayer : MonoBehaviour, ICardDisplayer, ISelectable
         if (card != null && audioSource != null && card.GetDefinition().audio != null)
         {
             audioSource.clip = card.GetDefinition().audio;
-            audioSource.Play();
+            //audioSource.Play();
         }
     }
 
