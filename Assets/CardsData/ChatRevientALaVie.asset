@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChatRevientALaVie
   m_EditorClassIdentifier: 
   Name: Chat Revient A La Vie
-  description: "Produit  6 golds/s et \xE0 deux vies"
+  description: Produit 6 golds/s et se revive 1 fois
   type: 2
   sprite: {fileID: 7767612723513096756, guid: 0508eafd2394ef05a9929d96088a49e3, type: 3}
   price: 40
