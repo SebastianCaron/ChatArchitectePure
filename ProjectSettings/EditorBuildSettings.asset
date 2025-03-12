@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Display Cards.unity
     guid: 7c0ccdb2e188e4bedbb525a6a8803739
+  - enabled: 1
+    path: Assets/Scenes/Game 1.unity
+    guid: 7aafbf71d870ef73d9b6661569ebd84f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
