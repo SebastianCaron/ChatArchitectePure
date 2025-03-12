@@ -2806,6 +2806,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 580b6c8572848c9978fe51f4d738c47d, type: 2}
   - {fileID: 11400000, guid: f96574099392f7154bd426e98c545ee4, type: 2}
   - {fileID: 11400000, guid: 29f449edd10c80570a3967087e990c02, type: 2}
+  - {fileID: 11400000, guid: 772a4cbe17e405f8c8ec186b7823c055, type: 2}
+  - {fileID: 11400000, guid: 043ce672dfcce58d69fa0cfe0a744fda, type: 2}
   champions:
   - {fileID: 11400000, guid: 3fa593a72ddf6b7bcb1d1400155ec7d3, type: 2}
   - {fileID: 11400000, guid: b02b4430b0c6089969d3eb93860664d6, type: 2}
@@ -3204,7 +3206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a4c5351e692509a897fda53aa20459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 9a19189553c0ff6a79f890b2fcb870d3, type: 3}
+  scene: 0
 --- !u!1 &1532139139
 GameObject:
   m_ObjectHideFlags: 0

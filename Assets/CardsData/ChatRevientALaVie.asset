@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeeba62302782777685d01584485af77, type: 3}
+  m_Name: ChatRevientALaVie
+  m_EditorClassIdentifier: 
+  Name: Chat Revient A La Vie
+  description: "Produit  6 golds/s et \xE0 deux vies"
+  type: 2
+  sprite: {fileID: 7767612723513096756, guid: 0508eafd2394ef05a9929d96088a49e3, type: 3}
+  price: 40
+  life: 10
+  damage: 0
+  production: 6
+  overtime: 0
+  isChampion: 1
+  alreadyBuy: 0
+  delay: 0
+  behaviour: 17
+  audio: {fileID: 8300000, guid: a2c195d5697b7e93da49da8eb3d54f84, type: 3}

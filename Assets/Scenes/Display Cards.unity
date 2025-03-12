@@ -172,6 +172,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb417d84baa69ff449a4646a23011e20, type: 2}
   - {fileID: 11400000, guid: 3e4369cd58a60443381b383270b66572, type: 2}
   - {fileID: 11400000, guid: 27311d115e6328e1bb28f9ebf04b5130, type: 2}
+  - {fileID: 11400000, guid: 772a4cbe17e405f8c8ec186b7823c055, type: 2}
+  - {fileID: 11400000, guid: 043ce672dfcce58d69fa0cfe0a744fda, type: 2}
   prefabDisplayer: {fileID: 197336098620097278, guid: ca083c47e1178a294982d1785ed5a56f, type: 3}
   content: {fileID: 426573617}
 --- !u!4 &91372234
@@ -912,7 +914,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 857380430}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.12845849
+  m_Size: 0.1284585
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1007,7 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a4c5351e692509a897fda53aa20459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 9a19189553c0ff6a79f890b2fcb870d3, type: 3}
+  scene: 0
 --- !u!114 &1423226983
 MonoBehaviour:
   m_ObjectHideFlags: 0
