@@ -18,8 +18,8 @@ Made by **Pierre Magieu** and **Sebastian Caron**.
 ### 🔧 Install and Run  
 1. **Clone the project**  
    ```bash
-   git clone https://github.com/SebastianCaron/Mew-Nation.git
-   cd Mew-Nation
+   git clone https://github.com/SebastianCaron/ChatArchitectePure.git
+   cd ChatArchitectePure
    ```
 2. **Open with Unity**  
    - Launch **Unity Hub**  
